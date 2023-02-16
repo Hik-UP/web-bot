@@ -1,0 +1,113 @@
+.titre {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    /* background-color: aqua; */
+}
+
+.article {
+    display: flex;
+    flex-wrap: wrap;
+    /* for horizontal aligning of child divs */
+    justify-content: center;
+    /* for vertical aligning */
+    align-items: center;
+    /* background-color: aquamarine; */
+}
+
+.div_image_article {
+    /* padding-right: 100px; */
+    /* padding-bottom: 2em; */
+}
+
+.image_article {
+    /* margin-left: 50%; */
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 850px;
+    max-height: 650px;
+    height: auto;
+    width: auto; */
+    border-radius: 50px;
+
+}
+
+/* .div_text_article {
+    padding-left: 100px;
+} */
+
+.arround_image_article {
+    /* margin-left: 50%; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccd5df;
+    padding: 0.2em;
+    border-radius: 50px;
+}
+
+.button_article {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* for horizontal aligning of child divs */
+    /* for vertical aligning */
+}
+
+
+.light_title {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    padding-right: 40em;
+    font-style: italic;
+    /* background-color: aqua; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.equipe {
+    display: flex;
+    flex-wrap: wrap;
+    /* for horizontal aligning of child divs */
+    justify-content: center;
+    /* for vertical aligning */
+    align-items: center;
+}
+
+.personne_de_equipe {
+    margin: 0px 80px;
+    width: 60px;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.image_equipe {
+    /* left: 50% !important; */
+    /* background-color: tomato; */
+}
+
+.nom_equipe {
+    display: flex;
+    flex-wrap: wrap;
+    /* for horizontal aligning of child divs */
+    justify-content: center;
+    /* for vertical aligning */
+    align-items: center;
+    font-weight: 500;
+
+    /* background-color: aquamarine; */
+}
