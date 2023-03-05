@@ -1,62 +1,50 @@
 .footer {
-    /* background-color: lightgray; */
-    padding-right: 7em;
-    padding-left: 7em;
+	padding-right: 7em;
+	padding-left: 7em;
 }
 
 .footer_center {
-    margin-top: 140px;
-    margin-right: 140px;
-    margin-left: 140px;
-    display: flex;
-    flex-wrap: wrap;
-    /* for horizontal aligning of child divs */
-    justify-content: center;
-    /* for vertical aligning */
-    align-items: center;
-    /* background-color: brown; */
+	margin-top: 140px;
+	margin-right: 140px;
+	margin-left: 140px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .title_footer {
-    font-weight: bold;
-    display: flex;
-    flex-wrap: wrap;
-    /* for horizontal aligning of child divs */
-    justify-content: center;
-    /* for vertical aligning */
-    align-items: center;
+	font-weight: bold;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .footer_image {
-    width: 120px;
-    height: 120px;
-    border-radius: 100%;
+	width: 120px;
+	height: 120px;
+	border-radius: 100%;
 }
 
 .footer_logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 20%;
-    /* padding-left: 5px;
-    padding-right: 5px; */
-    margin-left: 5px;
-    margin-right: 5px;
+	width: 40px;
+	height: 40px;
+	border-radius: 20%;
+	margin-left: 5px;
+	margin-right: 5px;
 
 }
 
 .footer_center_image {
-    display: flex;
-    flex-wrap: wrap;
-    /* for horizontal aligning of child divs */
-    justify-content: center;
-    /* for vertical aligning */
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .copyright_footer {
-    font-size: 12px;
-    /* for horizontal aligning of child divs */
-    justify-content: center;
-    /* for vertical aligning */
-    align-items: center;
+	font-size: 12px;
+	justify-content: center;
+	align-items: center;
 }
