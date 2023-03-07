@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { config, Spring, animated, SpringValue } from 'react-spring';
 
 import Button from '@mui/material/Button';
@@ -16,6 +16,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 
+import DownloadIcon from '@mui/icons-material/Download';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -35,6 +36,7 @@ import Footer from '../component/Footer';
 
 function Home() {
   const [index, setIndex] = useState(0);
+  const tooltip = useRef(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const viewArray = [
     { id: 'title', name: 'Accueil' },
@@ -85,16 +87,25 @@ function Home() {
     document.getElementById(viewArray[index].id)?.scrollIntoView();
   }, []);
 
+  useEffect(() => {
+    new Promise((r) => setTimeout(r, 600)).then(() => {
+      tooltip.current = false;
+      setIsScrolling(false);
+      document.body.addEventListener('wheel', MouseWheelHandler, false);
+    });
+  }, [index]);
+
   document.body.style.overflow = 'hidden';
   if (isScrolling === false) {
     document.body.addEventListener('wheel', MouseWheelHandler, false);
   }
   document.getElementById(viewArray[index].id)?.scrollIntoView();
-  window.addEventListener(
-    'resize',
-    () => document.getElementById(viewArray[index].id)?.scrollIntoView(),
-    false
-  );
+  window.addEventListener('resize', WindowResizeHandler, false);
+
+  // eslint-disable-next-line
+  function WindowResizeHandler(event: any) {
+    document.getElementById(viewArray[index].id)?.scrollIntoView();
+  }
 
   // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
@@ -104,27 +115,21 @@ function Home() {
       event.target.matches('#timeline-div, #timeline-div *') === false &&
       event.deltaY < 0
     ) {
+      document.body.removeEventListener('wheel', MouseWheelHandler, false);
       setIsScrolling(true);
       setIndex(index - 1);
-      document.body.removeEventListener('wheel', MouseWheelHandler, false);
-      document.addEventListener('scrollend', ScrollEndHandler, false);
+      tooltip.current = true;
     } else if (
       isScrolling === false &&
       index < viewArray.length - 1 &&
       event.target.matches('#timeline-div, #timeline-div *') === false &&
       event.deltaY > 0
     ) {
+      document.body.removeEventListener('wheel', MouseWheelHandler, false);
       setIsScrolling(true);
       setIndex(index + 1);
-      document.body.removeEventListener('wheel', MouseWheelHandler, false);
-      document.addEventListener('scrollend', ScrollEndHandler, false);
+      tooltip.current = true;
     }
-  }
-
-  function ScrollEndHandler() {
-    setIsScrolling(false);
-    document.removeEventListener('scrollend', ScrollEndHandler, false);
-    document.body.addEventListener('wheel', MouseWheelHandler, false);
   }
 
   return (
@@ -134,15 +139,19 @@ function Home() {
           <Spring
             config={config.wobbly}
             from={{ transform: `scale(1)` }}
-            to={{ transform: index === i ? `scale(1.25)` : `scale(1)` }}
+            to={{ transform: index === i ? `scale(2)` : `scale(1)` }}
           >
             {({ transform }: { transform: SpringValue<string> }) => (
-              <Tooltip title={item.name} placement="left" arrow>
+              <Tooltip
+                title={item.name}
+                placement="left"
+                open={i === index && tooltip.current}
+                arrow
+              >
                 <animated.button
                   className="nav-dot"
                   style={{ transform }}
                   onClick={() => setIndex(i)}
-                  onMouseOver={() => console.log(item.name)}
                 ></animated.button>
               </Tooltip>
             )}
@@ -153,6 +162,17 @@ function Home() {
         <div style={{ padding: '0' }} className="fullscreen-image" />
         <div className="content cover-text">
           <div className="title">Hik'Up</div>
+          <Button
+            href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
+            style={{
+              fontSize: '0.9em',
+              color: 'white'
+            }}
+            variant="text"
+            endIcon={<DownloadIcon />}
+          >
+            Télécharger
+          </Button>
           <Button
             style={{
               fontSize: '0.9em',
@@ -168,7 +188,7 @@ function Home() {
       </div>
       <div className="presentation" id="presentation-1">
         <div className="content">
-          <div className="title">Presentation de l'application</div>
+          <div className="title">Présentation de l'application</div>
         </div>
         <div
           className="container_ai"
