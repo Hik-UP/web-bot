@@ -17,13 +17,18 @@ html {
 .nav-dot {
   outline: none;
   border: none;
-  width: 10px;
-  height: 10px;
-  background: rgba(255,255,255,0.5);
+  width: 12px;
+  height: 12px;
+  background: rgba(170, 170, 170, 0.7);
   border-radius: 50%;
   margin: 0 16px;
   cursor: pointer;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: background 100ms ease-out 100ms
+}
+
+.nav-dot:hover {
+  background: rgba(200, 200, 200, 0.7);
 }
 
 .home-page {

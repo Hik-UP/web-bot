@@ -36,8 +36,8 @@ import Footer from '../component/Footer';
 
 function Home() {
   const [index, setIndex] = useState(0);
-  const tooltip = useRef(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const tooltip = useRef(false);
   const viewArray = [
     { id: 'title', name: 'Accueil' },
     { id: 'presentation-1', name: 'Description 1' },
@@ -84,23 +84,20 @@ function Home() {
   ];
 
   useEffect(() => {
-    document.getElementById(viewArray[index].id)?.scrollIntoView();
+    window.addEventListener('resize', WindowResizeHandler, false);
   }, []);
 
   useEffect(() => {
+    document.getElementById(viewArray[index].id)?.scrollIntoView();
+    setIsScrolling(true);
     new Promise((r) => setTimeout(r, 600)).then(() => {
+      document.body.addEventListener('wheel', MouseWheelHandler, false);
       tooltip.current = false;
       setIsScrolling(false);
-      document.body.addEventListener('wheel', MouseWheelHandler, false);
     });
   }, [index]);
 
   document.body.style.overflow = 'hidden';
-  if (isScrolling === false) {
-    document.body.addEventListener('wheel', MouseWheelHandler, false);
-  }
-  document.getElementById(viewArray[index].id)?.scrollIntoView();
-  window.addEventListener('resize', WindowResizeHandler, false);
 
   // eslint-disable-next-line
   function WindowResizeHandler(event: any) {
@@ -116,9 +113,8 @@ function Home() {
       event.deltaY < 0
     ) {
       document.body.removeEventListener('wheel', MouseWheelHandler, false);
-      setIsScrolling(true);
-      setIndex(index - 1);
       tooltip.current = true;
+      setIndex(index - 1);
     } else if (
       isScrolling === false &&
       index < viewArray.length - 1 &&
@@ -126,9 +122,8 @@ function Home() {
       event.deltaY > 0
     ) {
       document.body.removeEventListener('wheel', MouseWheelHandler, false);
-      setIsScrolling(true);
-      setIndex(index + 1);
       tooltip.current = true;
+      setIndex(index + 1);
     }
   }
 
@@ -141,20 +136,28 @@ function Home() {
             from={{ transform: `scale(1)` }}
             to={{ transform: index === i ? `scale(2)` : `scale(1)` }}
           >
-            {({ transform }: { transform: SpringValue<string> }) => (
-              <Tooltip
-                title={item.name}
-                placement="left"
-                open={i === index && tooltip.current}
-                arrow
-              >
-                <animated.button
-                  className="nav-dot"
-                  style={{ transform }}
-                  onClick={() => setIndex(i)}
-                ></animated.button>
-              </Tooltip>
-            )}
+            {({ transform }: { transform: SpringValue<string> }) => {
+              const [hover, setHover] = useState(false);
+
+              return (
+                <Tooltip
+                  title={item.name}
+                  placement="left"
+                  open={(i === index && tooltip.current) || hover}
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+                  arrow
+                >
+                  <animated.button
+                    className="nav-dot"
+                    style={{ transform }}
+                    onClick={() => {
+                      setIndex(i);
+                    }}
+                  ></animated.button>
+                </Tooltip>
+              );
+            }}
           </Spring>
         ))}
       </div>
@@ -169,6 +172,7 @@ function Home() {
               color: 'white'
             }}
             variant="text"
+            startIcon={<DownloadIcon />}
             endIcon={<DownloadIcon />}
           >
             Télécharger
@@ -179,8 +183,12 @@ function Home() {
               color: 'white'
             }}
             variant="text"
+            startIcon={<KeyboardArrowDownIcon />}
             endIcon={<KeyboardArrowDownIcon />}
-            onClick={() => window.scrollBy(0, window.innerHeight)}
+            onClick={() => {
+              tooltip.current = true;
+              setIndex(index + 1);
+            }}
           >
             En savoir plus
           </Button>
