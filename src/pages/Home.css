@@ -11,7 +11,7 @@ html {
   top: 50%;
   right: 50px;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 9999;
 }
 
 .nav-dot {
@@ -39,15 +39,18 @@ html {
   overflow: hidden;
 }
 
-.presentation {
+.slide {
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  width: 80%;
+  width: 100dvw;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   overflow-wrap: break-word;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+
 }
 
 .timeline {

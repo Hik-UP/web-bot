@@ -12,8 +12,9 @@ body {
   line-height: 1.6;
   color: #333;
   background: white;
-  background-size: 300%;
-  background-image: var(--gradient);
+  background-image: url('../assets/trees.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .content {
@@ -30,7 +31,6 @@ body {
   font-size: 3rem;
   margin: 0;
   background-clip: text;
-  background-size: 300%;
 }
 
 .figures {
@@ -57,18 +57,12 @@ body {
 }
 
 .container-fs {
-  width: 100%;
-  height: 100vh;
+  /*background-image: url('../assets/trees.gif');*/
+  width: 100dvw;
+  height: 100dvh;
   background-position: center;
   background-size: cover;
   position: relative;
-}
-
-.fullscreen-image {
-  background-image: url('../assets/trees.gif');
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
 }
 
 #background {

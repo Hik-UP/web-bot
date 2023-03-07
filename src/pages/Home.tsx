@@ -171,7 +171,6 @@ function Home() {
         ))}
       </div>
       <div style={{ padding: '0' }} className="container-fs" id="test">
-        <div style={{ padding: '0' }} className="fullscreen-image" />
         <div className="content cover-text">
           <div className="title">Hik'Up</div>
           <Button
@@ -203,7 +202,7 @@ function Home() {
           </Button>
         </div>
       </div>
-      <div className="presentation" id="presentation-1">
+      <div className="slide" id="presentation-1">
         <div className="content">
           <div className="title">Présentation de l'application</div>
         </div>
@@ -286,7 +285,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="presentation" id="presentation-2">
+      <div className="slide" id="presentation-2">
         <div
           className="container_ai"
           style={{
@@ -367,7 +366,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="presentation" id={'timeline'}>
+      <div className="slide" id={'timeline'}>
         <div className="content">
           <div className="title">Chronologie</div>
         </div>
@@ -589,7 +588,7 @@ function Home() {
           </Timeline>
         </div>
       </div>
-      <div className="presentation" id="team">
+      <div className="slide" id="team">
         <div className="content">
           <div className="title">Notre équipe</div>
         </div>
