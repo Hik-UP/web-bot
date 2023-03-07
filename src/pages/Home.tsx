@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { config, Spring, animated, SpringValue } from 'react-spring';
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -15,6 +16,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -35,11 +37,11 @@ function Home() {
   const [index, setIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const viewArray = [
-    'title',
-    'presentation-1',
-    'presentation-2',
-    'timeline',
-    'team'
+    { id: 'title', name: 'Accueil' },
+    { id: 'presentation-1', name: 'Description 1' },
+    { id: 'presentation-2', name: 'Description 2' },
+    { id: 'timeline', name: 'Chronologie' },
+    { id: 'team', name: 'Équipe' }
   ];
   const membersList = [
     {
@@ -79,15 +81,23 @@ function Home() {
     }
   ];
 
+  useEffect(() => {
+    document.getElementById(viewArray[index].id)?.scrollIntoView();
+  }, []);
+
   document.body.style.overflow = 'hidden';
   if (isScrolling === false) {
     document.body.addEventListener('wheel', MouseWheelHandler, false);
   }
-  document.getElementById(viewArray[index])?.scrollIntoView();
+  document.getElementById(viewArray[index].id)?.scrollIntoView();
+  window.addEventListener(
+    'resize',
+    () => document.getElementById(viewArray[index].id)?.scrollIntoView(),
+    false
+  );
 
+  // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
-    const allowed = true;
-
     if (
       isScrolling === false &&
       index > 0 &&
@@ -119,6 +129,26 @@ function Home() {
 
   return (
     <div className="home-page" id={'title'}>
+      <div className="nav-dot-container">
+        {viewArray.map((item, i) => (
+          <Spring
+            config={config.wobbly}
+            from={{ transform: `scale(1)` }}
+            to={{ transform: index === i ? `scale(1.25)` : `scale(1)` }}
+          >
+            {({ transform }: { transform: SpringValue<string> }) => (
+              <Tooltip title={item.name} placement="left" arrow>
+                <animated.button
+                  className="nav-dot"
+                  style={{ transform }}
+                  onClick={() => setIndex(i)}
+                  onMouseOver={() => console.log(item.name)}
+                ></animated.button>
+              </Tooltip>
+            )}
+          </Spring>
+        ))}
+      </div>
       <div style={{ padding: '0' }} className="container-fs" id="test">
         <div style={{ padding: '0' }} className="fullscreen-image" />
         <div className="content cover-text">
@@ -526,7 +556,7 @@ function Home() {
         <div className="content">
           <div className="title">Notre équipe</div>
         </div>
-        <ImageList sx={{ width: 1100, height: 600 }} cols={4}>
+        <ImageList sx={{ width: '50em', height: 600 }} cols={4}>
           {membersList.map((item) => (
             <ImageListItem key={item.img}>
               <img
@@ -537,7 +567,7 @@ function Home() {
               />
               <ImageListItemBar
                 title={item.name}
-                subtitle={<span>Status: {item.status}</span>}
+                subtitle={<span>{item.status}</span>}
                 position="below"
               />
             </ImageListItem>

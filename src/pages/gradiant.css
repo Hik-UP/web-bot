@@ -22,7 +22,6 @@ body {
 
 .content {
   --gradient: linear-gradient(90deg, green, #04D300, green);
-  padding: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
