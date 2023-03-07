@@ -17,15 +17,10 @@ body {
 }
 
 .content {
-  --gradient: linear-gradient(90deg, green, #04D300, green);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
-}
-
-.smallContent {
-  --gradient: linear-gradient(90deg, green, #04D300, green);
 }
 
 .title {
@@ -33,11 +28,8 @@ body {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 3rem;
-  color: #ee6352;
   margin: 0;
-  background-image: var(--gradient);
   background-clip: text;
-  color: transparent;
   background-size: 300%;
 }
 
@@ -46,11 +38,8 @@ body {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 2.5rem;
-  color: #ee6352;
   margin: 0;
-  background-image: var(--gradient);
   background-clip: text;
-  color: transparent;
   background-size: 300%;
 }
 
@@ -76,7 +65,7 @@ body {
 }
 
 .fullscreen-image {
-  background-image: url("https://wallpaperaccess.com/full/825191.jpg");
+  background-image: url('../assets/trees.gif');
   background-size: cover;
   width: 100vw;
   height: 100vh;

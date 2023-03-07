@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { config, Spring, animated, SpringValue } from 'react-spring';
 
 import Button from '@mui/material/Button';
+
 import Tooltip from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom';
 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -32,7 +34,6 @@ import Typography from '@mui/material/Typography';
 
 import './Home.css';
 import './gradiant.css';
-import Footer from '../component/Footer';
 
 function Home() {
   const [index, setIndex] = useState(0);
@@ -141,6 +142,14 @@ function Home() {
 
               return (
                 <Tooltip
+                  componentsProps={{
+                    tooltip: {
+                      sx: {
+                        fontSize: '0.7em'
+                      }
+                    }
+                  }}
+                  TransitionComponent={Zoom}
                   title={item.name}
                   placement="left"
                   open={(i === index && tooltip.current) || hover}
@@ -602,7 +611,6 @@ function Home() {
           ))}
         </ImageList>
       </div>
-      <Footer />
     </div>
   );
 }

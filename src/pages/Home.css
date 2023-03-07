@@ -75,16 +75,6 @@ html {
   width: 80%;
 }
 
-.titre {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  padding: 20px;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: bold;
-}
-
 .text {
   text-align: justify;
   overflow-wrap: break-word;
