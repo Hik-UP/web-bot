@@ -31,54 +31,60 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
 
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
-import './Home.css';
-import './gradiant.css';
+import './Home.scss';
 
 function Home() {
   const [index, setIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const tooltip = useRef(false);
   const viewArray = [
-    { id: 'title', name: 'Accueil' },
-    { id: 'presentation-1', name: 'Description 1' },
-    { id: 'presentation-2', name: 'Description 2' },
+    { id: 'home', name: 'Accueil' },
+    { id: 'presentation', name: 'Présentation' },
     { id: 'timeline', name: 'Chronologie' },
     { id: 'team', name: 'Équipe' }
   ];
   const membersList = [
     {
-      img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+      key: 1,
+      img: 'team_1.png',
       name: 'Mickael PONAPIN',
       status: 'Développeur Frontend'
     },
     {
-      img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+      key: 2,
+      img: 'team_2.png',
       name: 'Elias BENZAOUI',
       status: 'Développeur Frontend'
     },
     {
-      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+      key: 3,
+      img: 'team_1.png',
       name: 'Imdad ADELABOU',
       status: 'Développeur Frontend'
     },
     {
-      img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+      key: 4,
+      img: 'team_1.png',
       name: 'Maxime THIONG-KAY',
       status: 'Développeur Frontend'
     },
     {
-      img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
+      key: 5,
+      img: 'team_1.png',
       name: 'Quentin DI-MEO',
       status: 'Développeur Frontend'
     },
     {
-      img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
+      key: 6,
+      img: 'team_1.png',
       name: 'William NIZARD',
       status: 'Développeur Frontend'
     },
     {
-      img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
+      key: 7,
+      img: 'team_7.png',
       name: 'Alexandre BERTHOMIER',
       status: 'Développeur Backend'
     }
@@ -91,7 +97,7 @@ function Home() {
   useEffect(() => {
     document.getElementById(viewArray[index].id)?.scrollIntoView();
     setIsScrolling(true);
-    new Promise((r) => setTimeout(r, 600)).then(() => {
+    new Promise((r) => setTimeout(r, 800)).then(() => {
       document.body.addEventListener('wheel', MouseWheelHandler, false);
       tooltip.current = false;
       setIsScrolling(false);
@@ -102,34 +108,28 @@ function Home() {
 
   // eslint-disable-next-line
   function WindowResizeHandler(event: any) {
-    document.getElementById(viewArray[index].id)?.scrollIntoView();
+    setIndex(index);
   }
 
   // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
     if (
       isScrolling === false &&
-      index > 0 &&
-      event.target.matches('#timeline-div, #timeline-div *') === false &&
-      event.deltaY < 0
+      ((event.deltaY < 0 && index - 1 >= 0) ||
+        (event.deltaY > 0 && index + 1 <= viewArray.length - 1)) &&
+      event.target.matches('#timeline-container, #timeline-container *') ===
+        false
     ) {
       document.body.removeEventListener('wheel', MouseWheelHandler, false);
       tooltip.current = true;
-      setIndex(index - 1);
-    } else if (
-      isScrolling === false &&
-      index < viewArray.length - 1 &&
-      event.target.matches('#timeline-div, #timeline-div *') === false &&
-      event.deltaY > 0
-    ) {
-      document.body.removeEventListener('wheel', MouseWheelHandler, false);
-      tooltip.current = true;
-      setIndex(index + 1);
+      setIndex(
+        event.deltaY < 0 ? index - 1 : event.deltaY > 0 ? index + 1 : index
+      );
     }
   }
 
   return (
-    <div className="home-page" id={'title'}>
+    <div className="home-page">
       <div className="nav-dot-container">
         {viewArray.map((item, i) => (
           <Spring
@@ -170,207 +170,95 @@ function Home() {
           </Spring>
         ))}
       </div>
-      <div style={{ padding: '0' }} className="container-fs" id="test">
-        <div className="content cover-text">
-          <div className="title">Hik'Up</div>
-          <Button
-            href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
-            style={{
-              fontSize: '0.9em',
-              color: 'white'
-            }}
-            variant="text"
-            startIcon={<DownloadIcon />}
-            endIcon={<DownloadIcon />}
-          >
-            Télécharger
-          </Button>
-          <Button
-            style={{
-              fontSize: '0.9em',
-              color: 'white'
-            }}
-            variant="text"
-            startIcon={<KeyboardArrowDownIcon />}
-            endIcon={<KeyboardArrowDownIcon />}
-            onClick={() => {
-              tooltip.current = true;
-              setIndex(index + 1);
-            }}
-          >
-            En savoir plus
-          </Button>
-        </div>
+      <div className="home" id="home">
+        <div className="title">Hik'Up</div>
+        <Button
+          href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
+          style={{
+            fontSize: '0.9em',
+            color: 'white'
+          }}
+          variant="text"
+          startIcon={<DownloadIcon />}
+          endIcon={<DownloadIcon />}
+        >
+          Télécharger
+        </Button>
+        <Button
+          style={{
+            fontSize: '0.9em',
+            color: 'white'
+          }}
+          variant="text"
+          startIcon={<KeyboardArrowDownIcon />}
+          endIcon={<KeyboardArrowDownIcon />}
+          onClick={() => {
+            tooltip.current = true;
+            setIndex(1 <= viewArray.length - 1 ? 1 : index);
+          }}
+        >
+          En savoir plus
+        </Button>
       </div>
-      <div className="slide" id="presentation-1">
-        <div className="content">
-          <div className="title">Présentation de l'application</div>
-        </div>
-        <div
-          className="container_ai"
-          style={{
-            position: 'relative',
-            borderRadius: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
+      <div className="presentation" id="presentation">
+        <div className="title">Présentation</div>
+        <Grid
+          container
+          rowSpacing={1}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          className="grid"
         >
-          <div
-            className="col_ai"
-            style={{
-              position: 'relative',
-              borderRadius: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              maxWidth: '20em'
-            }}
-          >
+          <Grid item xs={6} className="grid-item">
             <div className="text">
-              Hik'Up est une application de randonnée qui s'inspire du célèbre
-              jeu mobile, Pokémon Go. L'application vise à apporter le plaisir
-              et l'excitation de la réalité virtuelle et des jeux vidéo dans le
-              monde de la randonnée et des activités en plein air.
+              Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout
+              en guidant ses utilisateurs vers de nombreux points d'intérêt.
+              Novices et passionnés se retrouvent au sein d'une communauté unie
+              par l'expérience tout en contribuant à la protection des
+              écosystèmes.
             </div>
-          </div>
-          <img
-            style={{
-              margin: '3em',
-              height: '10em',
-              width: '10em',
-              borderRadius: '10px'
-            }}
-            src={require('../assets/logo.png')}
-            alt="Hik'Up"
-          />
-        </div>
-        <div
-          className="container_ai"
-          style={{
-            position: 'relative',
-            borderRadius: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <img
-            style={{
-              margin: '3em',
-              height: '20em',
-              width: '10em',
-              borderRadius: '10px'
-            }}
-            src={require('../assets/navigation.png')}
-            alt="Hik'Up"
-          />
-          <div
-            className="col_ai"
-            style={{
-              position: 'relative',
-              borderRadius: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              maxWidth: '20em'
-            }}
-          >
+          </Grid>
+          <Grid item xs={6} className="grid-item">
+            <img
+              style={{
+                margin: '3em',
+                height: '10em',
+                width: '10em',
+                borderRadius: '10px'
+              }}
+              src={require('../assets/logo.png')}
+              alt="Hik'Up"
+            />
+          </Grid>
+          <Grid item xs={6} className="grid-item">
+            <img
+              style={{
+                margin: '3em',
+                height: '20em',
+                width: '10em',
+                borderRadius: '10px'
+              }}
+              src={require('../assets/navigation.png')}
+              alt="Hik'Up"
+            />
+          </Grid>
+          <Grid item xs={6} className="grid-item">
             <div className="text">
-              Avec Hik'Up, les utilisateurs peuvent explorer de nouveaux
-              sentiers de randonnée, découvrir des endroits intéressants et
-              collecter des récompenses virtuelles à mesure qu'ils avancent dans
-              l'application. L'application utilise la technologie de réalité
-              augmentée pour superposer des éléments virtuels sur le monde réel,
-              créant ainsi une expérience immersive pour les utilisateurs.
+              Le principe du jeu est de pouvoir gagner des points en marchant
+              lors de randonnées, ceux-ci étant attribués en fonction de la
+              distance parcourue. Les joueurs auront par la suite la possibilité
+              de dépenser les points gagnés pour planter des arbres, ou pour
+              améliorer l’apparence de leur personnage. De plus, une carte
+              interactive affichant la position du joueur sur le chemin
+              permettra de visualiser les points d’intérêt à proximité, chaque
+              point d’intérêt visité lui attribuant un succès visible par les
+              autres utilisateurs.
             </div>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
       </div>
-      <div className="slide" id="presentation-2">
-        <div
-          className="container_ai"
-          style={{
-            position: 'relative',
-            borderRadius: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <div
-            className="col_ai"
-            style={{
-              position: 'relative',
-              borderRadius: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              maxWidth: '20em'
-            }}
-          >
-            <div className="text">
-              En plus de ses éléments de jeu, Hik'Up inclut également une gamme
-              de fonctionnalités utiles pour les randonneurs, notamment des
-              cartes détaillées des sentiers, des prévisions météorologiques et
-              des alertes d'urgence. L'application permet également aux
-              utilisateurs de suivre leur progression, de partager leurs
-              randonnées avec leurs amis et de se connecter avec d'autres
-              utilisateurs de Hik'Up pour découvrir de nouveaux sentiers et des
-              endroits.
-            </div>
-          </div>
-          <img
-            style={{
-              margin: '3em',
-              height: '20em',
-              width: '13em',
-              borderRadius: '10px'
-            }}
-            src={require('../assets/meteo.png')}
-            alt="Hik'Up"
-          />
-        </div>
-        <div
-          className="container_ai"
-          style={{
-            position: 'relative',
-            borderRadius: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <img
-            style={{
-              margin: '3em',
-              height: '23em',
-              width: '13em',
-              borderRadius: '10px'
-            }}
-            src={require('../assets/sample.png')}
-            alt="Hik'Up"
-          />
-          <div
-            className="col_ai"
-            style={{
-              position: 'relative',
-              borderRadius: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              maxWidth: '20em'
-            }}
-          >
-            <div className="text">
-              Hik'Up est conçu pour être facile et intuitif à utiliser, avec une
-              interface simple et conviviale. L'application est disponible pour
-              les appareils Android et est gratuite à télécharger et à utiliser.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="slide" id={'timeline'}>
-        <div className="content">
-          <div className="title">Chronologie</div>
-        </div>
-        <div className="timeline" id="timeline-div">
+      <div className="timeline" id={'timeline'}>
+        <div className="title">Chronologie</div>
+        <div className="container" id="timeline-container">
           <Timeline position="alternate">
             <TimelineItem>
               <TimelineOppositeContent
@@ -588,16 +476,14 @@ function Home() {
           </Timeline>
         </div>
       </div>
-      <div className="slide" id="team">
-        <div className="content">
-          <div className="title">Notre équipe</div>
-        </div>
-        <ImageList sx={{ width: '50em', height: 600 }} cols={4}>
+      <div className="team" id="team">
+        <div className="title">Notre équipe</div>
+        <ImageList cols={4} className="container">
           {membersList.map((item) => (
-            <ImageListItem key={item.img}>
+            <ImageListItem key={item.key}>
               <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={require(`../assets/${item.img}`)}
+                srcSet={require(`../assets/${item.img}`)}
                 alt={item.name}
                 loading="lazy"
               />
