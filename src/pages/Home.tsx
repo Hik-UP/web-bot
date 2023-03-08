@@ -45,7 +45,6 @@ import './Home.scss';
 
 function Home() {
   const [index, setIndex] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
   const tooltip = useRef(false);
   const viewArray = [
     { id: 'home', name: 'Accueil' },
@@ -162,7 +161,7 @@ function Home() {
     },
     {
       key: 5,
-      img: 'team_1.png',
+      img: 'team_5.png',
       name: 'Quentin DI-MEO',
       status: 'Développeur Frontend'
     },
@@ -200,11 +199,9 @@ function Home() {
 
   useEffect(() => {
     document.getElementById(viewArray[index].id)?.scrollIntoView();
-    setIsScrolling(true);
     new Promise((r) => setTimeout(r, 800)).then(() => {
       document.body.addEventListener('wheel', MouseWheelHandler, false);
       tooltip.current = false;
-      setIsScrolling(false);
     });
   }, [index]);
 
@@ -218,7 +215,6 @@ function Home() {
   // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
     if (
-      isScrolling === false &&
       ((event.deltaY < 0 && index - 1 >= 0) ||
         (event.deltaY > 0 && index + 1 <= viewArray.length - 1)) &&
       event.target.matches('#timeline-container, #timeline-container *') ===
@@ -256,9 +252,9 @@ function Home() {
                   TransitionComponent={Zoom}
                   title={item.name}
                   placement="left"
-                  open={(i === index && tooltip.current) || hover}
+                  /*open={(i === index && tooltip.current) || hover}
                   onMouseEnter={() => setHover(true)}
-                  onMouseLeave={() => setHover(false)}
+                  onMouseLeave={() => setHover(false)}*/
                   arrow
                 >
                   <animated.button
