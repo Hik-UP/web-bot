@@ -78,7 +78,7 @@ function Home() {
     },
     {
       key: 6,
-      img: 'team_1.png',
+      img: 'team_6.png',
       name: 'William NIZARD',
       status: 'Développeur Frontend'
     },
