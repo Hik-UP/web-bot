@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { config, Spring, animated, SpringValue } from 'react-spring';
 
 import Button from '@mui/material/Button';
@@ -45,7 +45,6 @@ import './Home.scss';
 
 function Home() {
   const [index, setIndex] = useState(0);
-  const tooltip = useRef(false);
   const viewArray = [
     { id: 'home', name: 'Accueil' },
     { id: 'presentation', name: 'Présentation' },
@@ -201,7 +200,6 @@ function Home() {
     document.getElementById(viewArray[index].id)?.scrollIntoView();
     new Promise((r) => setTimeout(r, 800)).then(() => {
       document.body.addEventListener('wheel', MouseWheelHandler, false);
-      tooltip.current = false;
     });
   }, [index]);
 
@@ -221,7 +219,6 @@ function Home() {
         false
     ) {
       document.body.removeEventListener('wheel', MouseWheelHandler, false);
-      tooltip.current = true;
       setIndex(
         event.deltaY < 0 ? index - 1 : event.deltaY > 0 ? index + 1 : index
       );
@@ -238,7 +235,19 @@ function Home() {
             to={{ transform: index === i ? `scale(2)` : `scale(1)` }}
           >
             {({ transform }: { transform: SpringValue<string> }) => {
+              const [open, setOpen] = useState(false);
+              const [block, setBlock] = useState(false);
               const [hover, setHover] = useState(false);
+
+              if (block === false && i === index) {
+                setBlock(true);
+                setOpen(true);
+                new Promise((r) => setTimeout(r, 800)).then(() => {
+                  setOpen(false);
+                });
+              } else if (block === true && i !== index) {
+                setBlock(false);
+              }
 
               return (
                 <Tooltip
@@ -252,23 +261,26 @@ function Home() {
                   TransitionComponent={Zoom}
                   title={item.name}
                   placement="left"
-                  /*open={(i === index && tooltip.current) || hover}
+                  open={open || hover}
                   onMouseEnter={() => setHover(true)}
-                  onMouseLeave={() => setHover(false)}*/
+                  onMouseLeave={() => setHover(false)}
                   arrow
                 >
                   <animated.button
                     className="nav-dot"
                     style={{ transform }}
-                    onClick={() => {
-                      document.body.removeEventListener(
-                        'wheel',
-                        MouseWheelHandler,
-                        false
-                      );
-                      tooltip.current = true;
-                      setIndex(i);
-                    }}
+                    onClick={
+                      i !== index
+                        ? () => {
+                            document.body.removeEventListener(
+                              'wheel',
+                              MouseWheelHandler,
+                              false
+                            );
+                            setIndex(i);
+                          }
+                        : undefined
+                    }
                   ></animated.button>
                 </Tooltip>
               );
@@ -299,7 +311,6 @@ function Home() {
           startIcon={<KeyboardArrowDownIcon />}
           endIcon={<KeyboardArrowDownIcon />}
           onClick={() => {
-            tooltip.current = true;
             setIndex(1 <= viewArray.length - 1 ? 1 : index);
           }}
         >
