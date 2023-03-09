@@ -116,11 +116,13 @@ body {
     overflow-y: auto;
 
     @media only screen and (min-width: 800px) {
-      margin: 70px 25% 0 25%;
+      margin: 70px 23% 0 23%;
+      padding: 0 2% 0 2%;
     }
 
     @media only screen and (max-width: 800px) {
-      margin: 10px 10% 0 10%;
+      margin: 10px 8% 0 8%;
+      padding: 0 2% 0 2%;
     }
 
     .grid-item {
@@ -193,7 +195,6 @@ body {
       }
 
       overflow-y: auto;
-      //padding: 0 10% 0 10%;
       max-height: 70%;
     }
   }
@@ -209,6 +210,10 @@ body {
     overflow-wrap: break-word;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+
+    .name {
+      white-space: nowrap;
+    }
   }
 
   .container {

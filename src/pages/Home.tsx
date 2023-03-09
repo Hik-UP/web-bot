@@ -150,7 +150,7 @@ function Home() {
     },
     {
       key: 3,
-      img: 'team_1.png',
+      img: 'team_3.png',
       name: 'Imdad ADELABOU',
       status: 'Développeur Frontend'
     },
@@ -451,7 +451,7 @@ function Home() {
                 <Card>
                   <CardMedia
                     component="img"
-                    height="140"
+                    height="180"
                     image={require(`../assets/${item.img}`)}
                     alt={item.name}
                   />
