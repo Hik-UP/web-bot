@@ -289,7 +289,7 @@ function Home() {
                   }}
                   TransitionComponent={Zoom}
                   title={item.name}
-                  placement="left"
+                  placement={window.innerWidth > 1000 ? 'left' : 'top'}
                   open={open || hover}
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
@@ -443,7 +443,7 @@ function Home() {
           <Grid
             container
             rowSpacing={5}
-            //columnSpacing={5}
+            columnSpacing={2}
             columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
           >
             {membersList.map((item) => (
