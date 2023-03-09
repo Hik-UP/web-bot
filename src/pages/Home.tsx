@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { config, Spring, animated, SpringValue } from 'react-spring';
 
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
@@ -45,6 +46,8 @@ import './Home.scss';
 
 function Home() {
   const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const allowScroll = ['grid', 'timeline-container'];
   const viewArray = [
     { id: 'home', name: 'Accueil' },
     { id: 'presentation', name: 'Présentation' },
@@ -212,17 +215,44 @@ function Home() {
 
   // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
+    getAllowedScrollList();
     if (
       ((event.deltaY < 0 && index - 1 >= 0) ||
         (event.deltaY > 0 && index + 1 <= viewArray.length - 1)) &&
-      event.target.matches('#timeline-container, #timeline-container *') ===
-        false
+      event.target.matches(getAllowedScrollList()) === false
     ) {
       document.body.removeEventListener('wheel', MouseWheelHandler, false);
       setIndex(
         event.deltaY < 0 ? index - 1 : event.deltaY > 0 ? index + 1 : index
       );
     }
+  }
+
+  function getAllowedScrollList() {
+    const elementsList = allowScroll.map((item) => ({
+      id: item,
+      element: document.getElementById(item)
+    }));
+    const list = elementsList
+      .filter(
+        (item) =>
+          item.element && item.element.scrollHeight > item.element.clientHeight
+      )
+      .map((item) => `#${item.id}, #${item.id} *`);
+
+    return list;
+  }
+
+  window.onload = function () {
+    setLoading(false);
+  };
+
+  if (loading === true) {
+    return (
+      <div className="loading">
+        <CircularProgress style={{ color: 'black' }} />
+      </div>
+    );
   }
 
   return (
@@ -319,8 +349,14 @@ function Home() {
       </div>
       <div className="presentation" id="presentation">
         <div className="title">Présentation</div>
-        <Grid container rowSpacing={5} className="grid">
-          <Grid item xs={6} className="grid-item">
+        <Grid
+          container
+          spacing={{ xs: 10, md: 10 }}
+          columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
+          className="grid"
+          id="grid"
+        >
+          <Grid item xs={1} sm={1} md={1} className="grid-item">
             <div className="text">
               Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout
               en guidant ses utilisateurs vers de nombreux points d'intérêt.
@@ -329,7 +365,7 @@ function Home() {
               écosystèmes.
             </div>
           </Grid>
-          <Grid item xs={6} className="grid-item">
+          <Grid item xs={1} sm={1} md={1} className="grid-item">
             <img
               style={{
                 height: '10em',
@@ -340,7 +376,7 @@ function Home() {
               alt="Hik'Up"
             />
           </Grid>
-          <Grid item xs={6} className="grid-item">
+          <Grid item xs={1} sm={1} md={1} className="grid-item">
             <img
               style={{
                 height: '20em',
@@ -351,7 +387,7 @@ function Home() {
               alt="Hik'Up"
             />
           </Grid>
-          <Grid item xs={6} className="grid-item">
+          <Grid item xs={1} sm={1} md={1} className="grid-item">
             <div className="text">
               Le principe du jeu est de pouvoir gagner des points en marchant
               lors de randonnées, ceux-ci étant attribués en fonction de la
