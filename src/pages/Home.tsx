@@ -2,7 +2,6 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { config, Spring, animated, SpringValue } from 'react-spring';
 
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
 
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
@@ -45,7 +44,6 @@ import './Home.scss';
 
 function Home() {
   const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
   const allowScroll = ['pres-grid', 'team-grid', 'timeline-container'];
   const viewArray = [
     { id: 'home', name: 'Accueil' },
@@ -139,43 +137,43 @@ function Home() {
     {
       key: 1,
       img: 'team_1.png',
-      name: 'Mickael PONAPIN',
+      name: 'Mickael P.',
       status: 'Développeur Frontend'
     },
     {
       key: 2,
       img: 'team_2.png',
-      name: 'Elias BENZAOUI',
+      name: 'Elias B.',
       status: 'Développeur Frontend'
     },
     {
       key: 3,
       img: 'team_3.png',
-      name: 'Imdad ADELABOU',
+      name: 'Imdad A.',
       status: 'Développeur Frontend'
     },
     {
       key: 4,
       img: 'team_1.png',
-      name: 'Maxime THIONG-KAY',
+      name: 'Maxime T.',
       status: 'Développeur Frontend'
     },
     {
       key: 5,
       img: 'team_5.png',
-      name: 'Quentin DI-MEO',
+      name: 'Quentin D.',
       status: 'Développeur Frontend'
     },
     {
       key: 6,
       img: 'team_6.png',
-      name: 'William NIZARD',
+      name: 'William N.',
       status: 'Développeur Frontend'
     },
     {
       key: 7,
       img: 'team_7.png',
-      name: 'Alexandre BERTHOMIER',
+      name: 'Alexandre B.',
       status: 'Développeur Backend'
     }
   ];
@@ -214,7 +212,6 @@ function Home() {
 
   // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
-    getAllowedScrollList();
     if (
       ((event.deltaY < 0 && index - 1 >= 0) ||
         (event.deltaY > 0 && index + 1 <= viewArray.length - 1)) &&
@@ -240,18 +237,6 @@ function Home() {
       .map((item) => `#${item.id}, #${item.id} *`);
 
     return list;
-  }
-
-  window.onload = function () {
-    setLoading(false);
-  };
-
-  if (loading === true) {
-    return (
-      <div className="loading">
-        <CircularProgress style={{ color: 'black' }} />
-      </div>
-    );
   }
 
   return (
@@ -401,7 +386,7 @@ function Home() {
           </Grid>
         </div>
       </div>
-      <div className="timeline" id={'timeline'}>
+      <div className="timeline" id="timeline">
         <div className="title">Chronologie</div>
         <div className="container" id="timeline-container">
           <Timeline position="alternate">
