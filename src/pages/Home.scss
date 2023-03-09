@@ -40,19 +40,24 @@ body {
 
   .nav-dot-container {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
     position: fixed;
-    top: 50%;
-    right: 50px;
-    transform: translate(-50%, -50%);
     z-index: 9999;
+
+    @media only screen and (min-width: 800px) {
+      flex-direction: column;
+      gap: 15px;
+      top: 50%;
+      right: 50px;
+    }
+    @media only screen and (max-width: 800px) {
+      flex-direction: row;
+      gap: 1px;
+      bottom: 30px;
+    }
 
     .nav-dot {
       outline: none;
       border: none;
-      width: 12px;
-      height: 12px;
       background: rgba(170, 170, 170, 0.7);
       border-radius: 50%;
       margin: 0 16px;
@@ -63,6 +68,67 @@ body {
       &:hover {
         background: rgba(200, 200, 200, 0.7);
       }
+
+      @media only screen and (min-width: 800px) {
+        width: 12px;
+        height: 12px;
+      }
+      @media only screen and (max-width: 800px) {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+    background-clip: text;
+
+    @media only screen and (min-width: 800px) {
+      font-size: 3em;
+    }
+    @media only screen and (max-width: 800px) {
+      font-size: 2em;
+    }
+  }
+
+  .big-text {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .text {
+    text-align: justify;
+    overflow-wrap: break-word;
+
+    @media only screen and (min-width: 800px) {
+      font-size: 1em;
+    }
+    @media only screen and (max-width: 800px) {
+      font-size: 0.8em;
+    }
+  }
+
+  .grid {
+    max-height: 70%;
+    overflow-y: auto;
+
+    @media only screen and (min-width: 800px) {
+      margin: 70px 25% 0 25%;
+    }
+
+    @media only screen and (max-width: 800px) {
+      margin: 10px 10% 0 10%;
+    }
+
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
     }
   }
 
@@ -80,17 +146,22 @@ body {
     .title {
       text-transform: uppercase;
       font-weight: 900;
-      font-size: 4rem;
       margin: 0;
       background-clip: text;
       color: white;
+
+      @media only screen and (min-width: 800px) {
+        font-size: 4em;
+      }
+      @media only screen and (max-width: 800px) {
+        font-size: 3em;
+      }
     }
   }
 
   .presentation {
     display: flex;
     flex-direction: column;
-    gap: 70px;
     height: 100dvh;
     width: 100dvw;
     align-items: center;
@@ -99,40 +170,11 @@ body {
     overflow-wrap: break-word;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-
-    .title {
-      text-transform: uppercase;
-      font-weight: 900;
-      font-size: 3rem;
-      margin: 0;
-      background-clip: text;
-    }
-
-    .grid {
-      width: 60%;
-      max-height: 80%;
-      overflow-y: auto;
-      padding: 0 4% 0 4%;
-
-      .grid-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 300px;
-      }
-
-      .text {
-        text-align: justify;
-        overflow-wrap: break-word;
-      }
-    }
   }
 
   .timeline {
     display: flex;
     flex-direction: column;
-    gap: 30px;
     height: 100dvh;
     width: 100dvw;
     align-items: center;
@@ -142,25 +184,23 @@ body {
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
 
-    .title {
-      text-transform: uppercase;
-      font-weight: 900;
-      font-size: 3rem;
-      margin: 0;
-      background-clip: text;
-    }
-
     .container {
+      @media only screen and (min-width: 800px) {
+        margin: 30px 10% 0 10%;
+      }
+      @media only screen and (max-width: 800px) {
+        margin: 10px 10% 0 10%;
+      }
+
       overflow-y: auto;
-      width: 50em;
-      height: 40em;
+      //padding: 0 10% 0 10%;
+      max-height: 70%;
     }
   }
 
   .team {
     display: flex;
     flex-direction: column;
-    gap: 30px;
     height: 100dvh;
     width: 100dvw;
     align-items: center;
@@ -169,14 +209,6 @@ body {
     overflow-wrap: break-word;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-
-    .title {
-      text-transform: uppercase;
-      font-weight: 900;
-      font-size: 3rem;
-      margin: 0;
-      background-clip: text;
-    }
   }
 
   .container {
@@ -196,14 +228,6 @@ body {
     overflow-wrap: break-word;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-
-    .title {
-      text-transform: uppercase;
-      font-weight: 900;
-      font-size: 3rem;
-      margin: 0;
-      background-clip: text;
-    }
   }
 
   .list {

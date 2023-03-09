@@ -7,10 +7,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -24,6 +20,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 import DownloadIcon from '@mui/icons-material/Download';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -47,7 +46,7 @@ import './Home.scss';
 function Home() {
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const allowScroll = ['grid', 'timeline-container'];
+  const allowScroll = ['pres-grid', 'team-grid', 'timeline-container'];
   const viewArray = [
     { id: 'home', name: 'Accueil' },
     { id: 'presentation', name: 'Présentation' },
@@ -349,58 +348,58 @@ function Home() {
       </div>
       <div className="presentation" id="presentation">
         <div className="title">Présentation</div>
-        <Grid
-          container
-          spacing={{ xs: 10, md: 10 }}
-          columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
-          className="grid"
-          id="grid"
-        >
-          <Grid item xs={1} sm={1} md={1} className="grid-item">
-            <div className="text">
-              Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout
-              en guidant ses utilisateurs vers de nombreux points d'intérêt.
-              Novices et passionnés se retrouvent au sein d'une communauté unie
-              par l'expérience tout en contribuant à la protection des
-              écosystèmes.
-            </div>
+        <div className="grid" id="pres-grid">
+          <Grid
+            container
+            rowSpacing={5}
+            columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
+          >
+            <Grid item xs={1} sm={1} md={1} className="grid-item">
+              <div className="text">
+                Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout
+                en guidant ses utilisateurs vers de nombreux points d'intérêt.
+                Novices et passionnés se retrouvent au sein d'une communauté
+                unie par l'expérience tout en contribuant à la protection des
+                écosystèmes.
+              </div>
+            </Grid>
+            <Grid item xs={1} sm={1} md={1} className="grid-item">
+              <img
+                style={{
+                  height: '10em',
+                  width: '10em',
+                  borderRadius: '10px'
+                }}
+                src={require('../assets/logo.png')}
+                alt="Hik'Up"
+              />
+            </Grid>
+            <Grid item xs={1} sm={1} md={1} className="grid-item">
+              <img
+                style={{
+                  height: '20em',
+                  width: '10em',
+                  borderRadius: '10px'
+                }}
+                src={require('../assets/navigation.png')}
+                alt="Hik'Up"
+              />
+            </Grid>
+            <Grid item xs={1} sm={1} md={1} className="grid-item">
+              <div className="text">
+                Le principe du jeu est de pouvoir gagner des points en marchant
+                lors de randonnées, ceux-ci étant attribués en fonction de la
+                distance parcourue. Les joueurs auront par la suite la
+                possibilité de dépenser les points gagnés pour planter des
+                arbres, ou pour améliorer l’apparence de leur personnage. De
+                plus, une carte interactive affichant la position du joueur sur
+                le chemin permettra de visualiser les points d’intérêt à
+                proximité, chaque point d’intérêt visité lui attribuant un
+                succès visible par les autres utilisateurs.
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={1} sm={1} md={1} className="grid-item">
-            <img
-              style={{
-                height: '10em',
-                width: '10em',
-                borderRadius: '10px'
-              }}
-              src={require('../assets/logo.png')}
-              alt="Hik'Up"
-            />
-          </Grid>
-          <Grid item xs={1} sm={1} md={1} className="grid-item">
-            <img
-              style={{
-                height: '20em',
-                width: '10em',
-                borderRadius: '10px'
-              }}
-              src={require('../assets/navigation.png')}
-              alt="Hik'Up"
-            />
-          </Grid>
-          <Grid item xs={1} sm={1} md={1} className="grid-item">
-            <div className="text">
-              Le principe du jeu est de pouvoir gagner des points en marchant
-              lors de randonnées, ceux-ci étant attribués en fonction de la
-              distance parcourue. Les joueurs auront par la suite la possibilité
-              de dépenser les points gagnés pour planter des arbres, ou pour
-              améliorer l’apparence de leur personnage. De plus, une carte
-              interactive affichant la position du joueur sur le chemin
-              permettra de visualiser les points d’intérêt à proximité, chaque
-              point d’intérêt visité lui attribuant un succès visible par les
-              autres utilisateurs.
-            </div>
-          </Grid>
-        </Grid>
+        </div>
       </div>
       <div className="timeline" id={'timeline'}>
         <div className="title">Chronologie</div>
@@ -426,10 +425,12 @@ function Home() {
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <Typography variant="h6" component="span">
+                  <Typography className="big-text" component="span">
                     {item.title}
                   </Typography>
-                  <Typography>{item.description}</Typography>
+                  {window.innerWidth > 1000 ? (
+                    <Typography>{item.description}</Typography>
+                  ) : null}
                 </TimelineContent>
               </TimelineItem>
             ))}
@@ -438,27 +439,39 @@ function Home() {
       </div>
       <div className="team" id="team">
         <div className="title">Équipe</div>
-        <ImageList cols={4} className="container">
-          {membersList.map((item) => (
-            <ImageListItem key={item.key}>
-              <img
-                src={require(`../assets/${item.img}`)}
-                srcSet={require(`../assets/${item.img}`)}
-                alt={item.name}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                title={item.name}
-                subtitle={<span>{item.status}</span>}
-                position="below"
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
+        <div className="grid" id="team-grid">
+          <Grid
+            container
+            rowSpacing={5}
+            //columnSpacing={5}
+            columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
+          >
+            {membersList.map((item) => (
+              <Grid item xs={1} sm={1} md={1} className="grid-item">
+                <Card>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={require(`../assets/${item.img}`)}
+                    alt={item.name}
+                  />
+                  <CardContent>
+                    <Typography className="name" component="div">
+                      {item.name}
+                    </Typography>
+                    <Typography className="status" color="text.secondary">
+                      {item.status}
+                    </Typography>
+                  </CardContent>{' '}
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
       <div className="social" id="social">
         <div className="title">Réseaux</div>
-        <List sx={{ width: '100%', maxWidth: 360 }} className="list">
+        <List className="list">
           {socialList.map((item) => (
             <ListItem className="list-item">
               <ListItemAvatar>
