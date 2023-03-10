@@ -64,7 +64,7 @@ body {
     @media only screen and (max-width: 800px) {
       flex-direction: row;
       gap: 1px;
-      bottom: 15px;
+      bottom: 1.5%;
       padding: 4% 0 4% 0;
     }
 
@@ -89,6 +89,7 @@ body {
         height: 12px;
         transform: translate(-50%, -50%);
       }
+
       @media only screen and (max-width: 800px) {
         width: 10px;
         height: 10px;
@@ -105,6 +106,7 @@ body {
     @media only screen and (min-width: 800px) {
       font-size: 3em;
     }
+
     @media only screen and (max-width: 800px) {
       font-size: 2em;
     }
@@ -117,6 +119,7 @@ body {
     @media only screen and (min-width: 800px) {
       font-size: 1em;
     }
+
     @media only screen and (max-width: 800px) {
       font-size: 0.9em;
     }
@@ -132,8 +135,8 @@ body {
     }
 
     @media only screen and (max-width: 800px) {
-      margin: 10px 8% 0 8%;
-      padding: 0 2% 0 2%;
+      margin: 10px 2% 0 2%;
+      padding: 0 4% 0 4%;
     }
 
     .grid-item {
@@ -141,7 +144,6 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 300px;
     }
   }
 
@@ -167,6 +169,7 @@ body {
       @media only screen and (min-width: 800px) {
         font-size: 4em;
       }
+
       @media only screen and (max-width: 800px) {
         font-size: 3em;
       }
@@ -206,9 +209,10 @@ body {
         margin: 30px 0 0 0;
         width: 54%;
       }
+
       @media only screen and (max-width: 800px) {
         margin: 10px 0 0 0;
-        width: 84%;
+        width: 98%;
       }
 
       .timeline-content {
@@ -313,6 +317,8 @@ body {
       box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
 
       .list-item {
+        min-width: 250px;
+
         &:hover {
           cursor: pointer;
           color: gray;

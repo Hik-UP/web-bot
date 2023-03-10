@@ -313,7 +313,7 @@ function Home() {
                   style={{ zIndex: 4 }}
                   TransitionComponent={Zoom}
                   title={item.name}
-                  placement={window.innerWidth > 1000 ? 'left' : 'top'}
+                  placement={window.innerWidth > 800 ? 'left' : 'top'}
                   open={open || hover}
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
@@ -430,11 +430,11 @@ function Home() {
                   <Typography className="task" component="span">
                     {item.title}
                   </Typography>
-                  {window.innerWidth > 1000 ? (
+                  {window.innerWidth > 800 ? (
                     <Typography className="description">
                       {item.description}
                     </Typography>
-                  ) : null}
+                  ) : undefined}
                 </TimelineContent>
               </TimelineItem>
             ))}
@@ -485,7 +485,9 @@ function Home() {
                 </ListItemAvatar>
                 <ListItemText
                   primary={item.title}
-                  secondary={item.description}
+                  secondary={
+                    window.innerWidth > 800 ? item.description : undefined
+                  }
                   onClick={() => window.open(item.url, '_blank')}
                 />
               </ListItem>
