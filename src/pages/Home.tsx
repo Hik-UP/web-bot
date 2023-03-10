@@ -44,13 +44,47 @@ import './Home.scss';
 
 function Home() {
   const [index, setIndex] = useState(0);
-  const allowScroll = ['pres-grid', 'team-grid', 'timeline-container'];
+  const allowScroll = [
+    'pres-grid',
+    'team-grid',
+    'timeline-container',
+    'social-list'
+  ];
   const viewArray = [
     { id: 'home', name: 'Accueil' },
     { id: 'presentation', name: 'Présentation' },
     { id: 'timeline', name: 'Chronologie' },
     { id: 'team', name: 'Équipe' },
     { id: 'social', name: 'Réseaux' }
+  ];
+  const presList: (
+    | { type: 'text'; body: string }
+    | { type: 'picture'; path: string; width: string; height: string }
+  )[] = [
+    {
+      type: 'text',
+      body: "Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout en guidant  \
+            ses utilisateurs vers de nombreux points d'intérêt. Novices et passionnés se  \
+            retrouvent au sein d'une communauté unie par l'expérience tout en contribuant \
+            à la protection des écosystèmes."
+    },
+    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    {
+      type: 'picture',
+      path: 'navigation.png',
+      width: '10em',
+      height: '20em'
+    },
+    {
+      type: 'text',
+      body: 'Le principe du jeu est de pouvoir gagner des points en marchant lors de      \
+            randonnées, ceux-ci étant attribués en fonction de la distance parcourue. Les \
+            joueurs auront par la suite la possibilité de dépenser les points gagnés pour \
+            planter des arbres, ou pour améliorer l’apparence de leur personnage. De plus,\
+            une carte interactive affichant la position du joueur sur le chemin permettra \
+            de visualiser les points d’intérêt à proximité, chaque point d’intérêt visité \
+            lui attribuant un succès visible par les autres utilisateurs.'
+    }
   ];
   const timelineList: {
     date: string;
@@ -276,6 +310,7 @@ function Home() {
                       }
                     }
                   }}
+                  style={{ zIndex: 4 }}
                   TransitionComponent={Zoom}
                   title={item.name}
                   placement={window.innerWidth > 1000 ? 'left' : 'top'}
@@ -311,18 +346,17 @@ function Home() {
         <Button
           href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
           style={{
-            fontSize: '0.9em',
             color: 'white'
           }}
           variant="text"
           startIcon={<DownloadIcon />}
           endIcon={<DownloadIcon />}
+          className="text"
         >
           Télécharger
         </Button>
         <Button
           style={{
-            fontSize: '0.9em',
             color: 'white'
           }}
           variant="text"
@@ -331,6 +365,7 @@ function Home() {
           onClick={() => {
             setIndex(1 <= viewArray.length - 1 ? 1 : index);
           }}
+          className="text"
         >
           En savoir plus
         </Button>
@@ -344,50 +379,23 @@ function Home() {
             columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
             style={{ padding: '5% 0 5% 0' }}
           >
-            <Grid item xs={1} sm={1} md={1} className="grid-item">
-              <div className="text">
-                Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout
-                en guidant ses utilisateurs vers de nombreux points d'intérêt.
-                Novices et passionnés se retrouvent au sein d'une communauté
-                unie par l'expérience tout en contribuant à la protection des
-                écosystèmes.
-              </div>
-            </Grid>
-            <Grid item xs={1} sm={1} md={1} className="grid-item">
-              <img
-                style={{
-                  height: '10em',
-                  width: '10em',
-                  borderRadius: '10px'
-                }}
-                src={require('../assets/logo.png')}
-                alt="Hik'Up"
-              />
-            </Grid>
-            <Grid item xs={1} sm={1} md={1} className="grid-item">
-              <img
-                style={{
-                  height: '20em',
-                  width: '10em',
-                  borderRadius: '10px'
-                }}
-                src={require('../assets/navigation.png')}
-                alt="Hik'Up"
-              />
-            </Grid>
-            <Grid item xs={1} sm={1} md={1} className="grid-item">
-              <div className="text">
-                Le principe du jeu est de pouvoir gagner des points en marchant
-                lors de randonnées, ceux-ci étant attribués en fonction de la
-                distance parcourue. Les joueurs auront par la suite la
-                possibilité de dépenser les points gagnés pour planter des
-                arbres, ou pour améliorer l’apparence de leur personnage. De
-                plus, une carte interactive affichant la position du joueur sur
-                le chemin permettra de visualiser les points d’intérêt à
-                proximité, chaque point d’intérêt visité lui attribuant un
-                succès visible par les autres utilisateurs.
-              </div>
-            </Grid>
+            {presList.map((item) => (
+              <Grid item xs={1} sm={1} md={1} className="grid-item">
+                {item.type === 'text' ? (
+                  <div className="text">{item.body}</div>
+                ) : (
+                  <img
+                    style={{
+                      height: item.height,
+                      width: item.width,
+                      borderRadius: '10px'
+                    }}
+                    src={require(`../assets/${item.path}`)}
+                    alt="Hik'Up"
+                  />
+                )}
+              </Grid>
+            ))}
           </Grid>
         </div>
       </div>
@@ -468,20 +476,22 @@ function Home() {
       </div>
       <div className="social" id="social">
         <div className="title">Réseaux</div>
-        <List className="list">
-          {socialList.map((item) => (
-            <ListItem className="list-item">
-              <ListItemAvatar>
-                <Avatar>{item.icon}</Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={item.title}
-                secondary={item.description}
-                onClick={() => window.open(item.url, '_blank')}
-              />
-            </ListItem>
-          ))}
-        </List>
+        <div className="list-container" id="social-list">
+          <List className="list">
+            {socialList.map((item) => (
+              <ListItem className="list-item">
+                <ListItemAvatar>
+                  <Avatar>{item.icon}</Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={item.title}
+                  secondary={item.description}
+                  onClick={() => window.open(item.url, '_blank')}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </div>
     </div>
   );

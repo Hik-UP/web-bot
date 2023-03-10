@@ -46,7 +46,7 @@ body {
     align-items: center;
     justify-content: center;
     position: fixed;
-    z-index: 9999;
+    z-index: 3;
 
     border-radius: 7px;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
@@ -260,18 +260,29 @@ body {
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
 
     .picture {
-      height: 10em
+      @media only screen and (min-width: 800px) {
+        height: 10em;
+      }
+
+      @media only screen and (max-width: 800px) {
+        height: 17em;
+      }
     }
 
     .name {
       white-space: nowrap;
+      font-size: 1em;
+    }
+
+    .status {
+      white-space: nowrap;
+      font-size: 0.8em;
     }
   }
 
   .social {
     display: flex;
     flex-direction: column;
-    gap: 100px;
     height: 100dvh;
     width: 100dvw;
     align-items: center;
@@ -282,15 +293,30 @@ body {
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
   }
 
-  .list {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+  .list-container {
+    max-height: 70%;
+    overflow-y: auto;
 
-    .list-item {
-      &:hover {
-        cursor: pointer;
-        color: gray;
+    @media only screen and (min-width: 800px) {
+      margin: 70px 23% 0 23%;
+      padding: 2%;
+    }
+
+    @media only screen and (max-width: 800px) {
+      margin: 10px 8% 0 8%;
+      padding: 4%;
+    }
+
+    .list {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+
+      .list-item {
+        &:hover {
+          cursor: pointer;
+          color: gray;
+        }
       }
     }
   }
