@@ -154,7 +154,7 @@ function Home() {
     },
     {
       key: 4,
-      img: 'team_1.png',
+      img: 'team_4.png',
       name: 'Maxime T.',
       status: 'Développeur Frontend'
     },
