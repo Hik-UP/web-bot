@@ -212,10 +212,13 @@ function Home() {
 
   // eslint-disable-next-line
   function MouseWheelHandler(event: any) {
+    const finalScrollList = getAllowedScrollList();
+
     if (
       ((event.deltaY < 0 && index - 1 >= 0) ||
         (event.deltaY > 0 && index + 1 <= viewArray.length - 1)) &&
-      event.target.matches(getAllowedScrollList()) === false
+      (finalScrollList.length === 0 ||
+        event.target.matches(finalScrollList) === false)
     ) {
       document.body.removeEventListener('wheel', MouseWheelHandler, false);
       setIndex(
@@ -235,6 +238,7 @@ function Home() {
           item.element && item.element.scrollHeight > item.element.clientHeight
       )
       .map((item) => `#${item.id}, #${item.id} *`);
+    console.log(list);
 
     return list;
   }
@@ -338,6 +342,7 @@ function Home() {
             container
             rowSpacing={5}
             columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
+            style={{ padding: '5% 0 5% 0' }}
           >
             <Grid item xs={1} sm={1} md={1} className="grid-item">
               <div className="text">
@@ -436,15 +441,16 @@ function Home() {
             rowSpacing={5}
             columnSpacing={2}
             columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
+            style={{ padding: '5% 0 5% 0' }}
           >
             {membersList.map((item) => (
               <Grid item xs={1} sm={1} md={1} className="grid-item">
                 <Card>
                   <CardMedia
                     component="img"
-                    height="180"
                     image={require(`../assets/${item.img}`)}
                     alt={item.name}
+                    className="picture"
                   />
                   <CardContent>
                     <Typography className="name" component="div">

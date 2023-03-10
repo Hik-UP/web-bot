@@ -251,14 +251,13 @@ body {
     background: rgba(255, 255, 255, 0.95);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
 
+    .picture {
+      height: 10em
+    }
+
     .name {
       white-space: nowrap;
     }
-  }
-
-  .container {
-    width: 50em;
-    height: 600px;
   }
 
   .social {
