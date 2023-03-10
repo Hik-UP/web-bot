@@ -396,6 +396,7 @@ function Home() {
                   sx={{ m: 'auto 0' }}
                   variant="body2"
                   color="text.secondary"
+                  className="date"
                 >
                   {item.date}
                 </TimelineOppositeContent>
@@ -409,12 +410,17 @@ function Home() {
                   </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <Typography className="big-text" component="span">
+                <TimelineContent
+                  sx={{ py: '12px', px: 2 }}
+                  className="timeline-content"
+                >
+                  <Typography className="task" component="span">
                     {item.title}
                   </Typography>
                   {window.innerWidth > 1000 ? (
-                    <Typography>{item.description}</Typography>
+                    <Typography className="description">
+                      {item.description}
+                    </Typography>
                   ) : null}
                 </TimelineContent>
               </TimelineItem>
