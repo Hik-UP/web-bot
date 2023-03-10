@@ -272,7 +272,6 @@ function Home() {
           item.element && item.element.scrollHeight > item.element.clientHeight
       )
       .map((item) => `#${item.id}, #${item.id} *`);
-    console.log(list);
 
     return list;
   }
