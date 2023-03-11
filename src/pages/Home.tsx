@@ -64,7 +64,8 @@ function Home() {
         path: string;
         width: string;
         height: string;
-        alt: string }
+        alt: string
+      }
   )[] = [
     {
       type: 'text',
