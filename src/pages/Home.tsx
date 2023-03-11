@@ -77,13 +77,13 @@ function Home() {
     },
     {
       type: 'text',
-      body: 'Le principe du jeu est de pouvoir gagner des points en marchant lors de      \
+      body: "Le principe du jeu est de pouvoir gagner des points en marchant lors de      \
             randonnées, ceux-ci étant attribués en fonction de la distance parcourue. Les \
             joueurs auront par la suite la possibilité de dépenser les points gagnés pour \
-            planter des arbres, ou pour améliorer l’apparence de leur personnage. De plus,\
+            planter des arbres, ou pour améliorer l'apparence de leur personnage. De plus,\
             une carte interactive affichant la position du joueur sur le chemin permettra \
-            de visualiser les points d’intérêt à proximité, chaque point d’intérêt visité \
-            lui attribuant un succès visible par les autres utilisateurs.'
+            de visualiser les points d'intérêt à proximité, chaque point d'intérêt visité \
+            lui attribuant un succès visible par les autres utilisateurs."
     }
   ];
   const timelineList: {
@@ -108,63 +108,63 @@ function Home() {
       date: 'Septembre 2021',
       icon: <RocketLaunchIcon />,
       title: 'Création',
-      description: "Naissance du projet Hik'UP."
+      description: "Naissance du projet Hik'UP"
     },
     {
       date: 'Décembre 2021',
       icon: <RemoveRedEyeIcon />,
       iconVariant: 'outlined',
       title: 'Prototypage',
-      description: 'Vérification de la viabilité du projet.'
+      description: 'Vérification de la viabilité du projet'
     },
     {
       date: 'Janvier 2022',
       icon: <CheckCircleIcon />,
       iconColor: 'success',
       title: 'Validation',
-      description: 'Projet validé par notre équipe pédagogique.'
+      description: 'Projet validé par notre équipe pédagogique'
     },
     {
       date: 'Mars 2022',
       icon: <CodeIcon />,
       title: 'Développement',
       iconVariant: 'outlined',
-      description: 'Début du développement de notre application.'
+      description: 'Début du développement de notre application'
     },
     {
       date: 'Septembre 2022',
       icon: <LoopIcon />,
       iconVariant: 'outlined',
       title: 'Restructuration',
-      description: "Passage du moteur de rendu d'Unity à Flutter."
+      description: "Passage du moteur de rendu d'Unity à Flutter"
     },
     {
       date: 'Janvier 2023',
       icon: <StorageIcon />,
       iconVariant: 'outlined',
       title: 'Backend 2.0',
-      description: 'Réécriture du backend en prévision de notre bêta.'
+      description: 'Réécriture du backend en prévision de notre bêta'
     },
     {
       date: 'Mai 2023',
       icon: <BugReportIcon />,
       iconColor: 'secondary',
       title: 'Bêta',
-      description: 'Bêta, axée sur son aspect informatif.'
+      description: 'Bêta, axée sur son aspect informatif'
     },
     {
       date: 'Septembre 2023',
       icon: <SportsEsportsIcon />,
       iconVariant: 'outlined',
       title: 'Ludification',
-      description: "Lancement de l'aspect ludique de notre application."
+      description: "Lancement de l'aspect ludique de notre application"
     },
     {
       date: 'Novembre 2023',
       icon: <NewReleasesIcon />,
       iconColor: 'primary',
       title: 'Publication',
-      description: 'Version grand public de notre application.'
+      description: 'Version grand public de notre application'
     }
   ];
   const membersList = [
@@ -172,43 +172,74 @@ function Home() {
       key: 1,
       img: 'team_1.png',
       name: 'Mickael P.',
-      status: 'Développeur Frontend'
+      status: 'Développeur Frontend',
+      caption:
+        "Chef de groupe, Mickael contribue majoritairement aux pages \
+        annexes de l'application mobile : connexion, accueil, maquettes..."
     },
     {
       key: 2,
       img: 'team_2.png',
       name: 'Elias B.',
-      status: 'Développeur Frontend'
+      status: 'Développeur Frontend',
+      caption:
+        'Grâce à ses compétences en sécurité, Elias contribue à la robustesse \
+        des échanges de données utilisateur vers et depuis les serveurs.'
     },
     {
       key: 3,
       img: 'team_3.png',
       name: 'Imdad A.',
-      status: 'Développeur Frontend'
+      status: 'Développeur Frontend',
+      caption:
+        'Électron libre polyvalent, Imdad assiste Alexandre sur le back et \
+        contribue aux systèmes de notification utilisateur.'
     },
     {
       key: 4,
       img: 'team_4.png',
       name: 'Maxime T.',
-      status: 'Développeur Frontend'
+      status: 'Développeur Frontend',
+      caption:
+        "Notre patte artistique, Maxime s'occupe de notre charte graphique et \
+        de rendre notre application plus belle et agréable à utiliser."
     },
     {
       key: 5,
       img: 'team_5.png',
       name: 'Quentin D.',
-      status: 'Développeur Frontend'
+      status: 'Développeur Frontend',
+      caption:
+        "Atout majeur du front-end, Quentin s'occupe en priorité de la carte \
+        interactive et ses fonctionnalités : itinéraires, points d'intérêt, \
+        bulles..."
     },
     {
       key: 6,
       img: 'team_6.png',
       name: 'William N.',
-      status: 'Développeur Frontend'
+      status: 'Développeur Frontend',
+      caption:
+        "Élément-clé de notre interaction utilisateur, William s'occupe de \
+        nos réseaux sociaux en parallèle de ses contributions à la page \
+        communautaire."
     },
     {
       key: 7,
       img: 'team_7.png',
       name: 'Alexandre B.',
-      status: 'Développeur Backend'
+      status: 'Développeur Backend',
+      caption:
+        'Notre directeur back-end, Alexandre opère sur nos serveurs et nos \
+        API en les sécurisant et nous offrant les connexions dont nous \
+        avons besoin.'
+    },
+    {
+      key: 8,
+      img: 'logo.png',
+      name: ' ',
+      status: ' ',
+      caption: "Hik'UP"
     }
   ];
   const socialList = [
@@ -452,22 +483,35 @@ function Home() {
           >
             {membersList.map((item) => (
               <Grid item xs={1} sm={1} md={1} className="grid-item">
-                <Card>
-                  <CardMedia
-                    component="img"
-                    image={require(`../assets/${item.img}`)}
-                    alt={item.name}
-                    className="picture"
-                  />
-                  <CardContent>
-                    <Typography className="name" component="div">
-                      {item.name}
-                    </Typography>
-                    <Typography className="status" color="text.secondary">
-                      {item.status}
-                    </Typography>
-                  </CardContent>{' '}
-                </Card>
+                <div className="wrapper">
+                  <Card>
+                    <CardMedia
+                      component="img"
+                      image={require(`../assets/${item.img}`)}
+                      alt={item.name}
+                      className="picture"
+                    />
+                    {item.key < 8 ? (
+                      <CardContent style={{ padding: '10px' }}>
+                        <Typography className="name" component="div">
+                          {item.name}
+                        </Typography>
+                        <Typography className="status" color="text.secondary">
+                          {item.status}
+                        </Typography>
+                      </CardContent>
+                    ) : (
+                      <></>
+                    )}
+                  </Card>
+                  {item.key < 8 ? (
+                    <div className="caption">
+                      <div className="caption--text">{item.caption}</div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </Grid>
             ))}
           </Grid>
