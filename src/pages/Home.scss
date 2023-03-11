@@ -54,18 +54,18 @@ body {
 
     @media only screen and (min-width: 800px) {
       flex-direction: column;
-      gap: 15px;
+      gap: 32px;
       top: 50%;
-      right: 50px;
+      right: 1%;
       transform: translate(-50%, -50%);
-      padding: 1.5% 0 1.5% 0;
+      padding: 1.5% 0;
     }
 
     @media only screen and (max-width: 800px) {
       flex-direction: row;
       gap: 1px;
       bottom: 1.5%;
-      padding: 4% 0 4% 0;
+      padding: 4% 0;
     }
 
     .nav-dot {
@@ -135,7 +135,7 @@ body {
     }
 
     @media only screen and (max-width: 800px) {
-      margin: 10px 2% 0 2%;
+      margin: 0 2% 10px 2%;
       padding: 0 4%;
     }
 
@@ -211,7 +211,7 @@ body {
       }
 
       @media only screen and (max-width: 800px) {
-        margin: 10px 0 0 0;
+        margin-bottom: 10px;
         width: 98%;
       }
 
@@ -309,7 +309,7 @@ body {
       transition: all 320ms ease-out;
       text-align: center;
       @media only screen and (max-width: 400px) {
-        font-size: 24px;
+        font-size: 26px;
       }
     }
     .wrapper .caption:hover {

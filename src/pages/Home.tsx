@@ -364,7 +364,7 @@ function Home() {
                           }
                         : undefined
                     }
-                  ></animated.button>
+                  />
                 </Tooltip>
               );
             }}
