@@ -59,7 +59,12 @@ function Home() {
   ];
   const presList: (
     | { type: 'text'; body: string }
-    | { type: 'picture'; path: string; width: string; height: string }
+    | {
+        type: 'picture';
+        path: string;
+        width: string;
+        height: string;
+        alt: string }
   )[] = [
     {
       type: 'text',
@@ -68,12 +73,19 @@ function Home() {
             développement a commencé à l'aube de 2022 et verra sa bêta sortir l'année suivante \
             pour entrevoir une sortie officielle en janvier 2024."
     },
-    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    {
+      type: 'picture',
+      path: 'logo.png',
+      width: '10em',
+      height: '10em',
+      alt: "logo Hik'UP"
+    },
     {
       type: 'picture',
       path: 'navigation.png',
-      width: '10em',
-      height: '20em'
+      width: '12em',
+      height: '18em',
+      alt: 'projection de navigation 3D sur la GR20'
     },
     {
       type: 'text',
@@ -90,8 +102,20 @@ function Home() {
             météo et terrain. Hik'UP vous offre également la possibilité de convertir votre sueur \
             en bonne action, plantant des arbres à chaque nouveau point de contrôle atteint."
     },
-    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
-    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    {
+      type: 'picture',
+      path: 'logo.png',
+      width: '10em',
+      height: '10em',
+      alt: "logo Hik'UP"
+    },
+    {
+      type: 'picture',
+      path: 'logo.png',
+      width: '10em',
+      height: '10em',
+      alt: "logo Hik'UP"
+    },
     {
       type: 'text',
       body: "Grâce à ses statistiques poussées et ses parcours uniques, tracez vos efforts sur \
@@ -108,8 +132,20 @@ function Home() {
             et évaluez les randonnées que vous avez complétées pour nous aider à perfectionner les \
             ressources proposées !"
     },
-    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
-    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    {
+      type: 'picture',
+      path: 'logo.png',
+      width: '10em',
+      height: '10em',
+      alt: "logo Hik'UP"
+    },
+    {
+      type: 'picture',
+      path: 'logo.png',
+      width: '10em',
+      height: '10em',
+      alt: "logo Hik'UP"
+    },
     {
       type: 'text',
       body: "Que vous veniez en touriste ou soyiez à la recherche de nouvelles expériences \
@@ -203,7 +239,7 @@ function Home() {
       key: 1,
       img: 'team_1.png',
       name: 'Mickael P.',
-      status: 'Développeur Frontend',
+      status: 'Développeur front-end',
       caption:
         "Chef de groupe, Mickael contribue majoritairement aux pages \
         annexes de l'application mobile : connexion, accueil, maquettes..."
@@ -212,7 +248,7 @@ function Home() {
       key: 2,
       img: 'team_2.png',
       name: 'Elias B.',
-      status: 'Développeur Frontend',
+      status: 'Développeur front-end',
       caption:
         'Grâce à ses compétences en sécurité, Elias contribue à la robustesse \
         des échanges de données utilisateur vers et depuis les serveurs.'
@@ -221,7 +257,7 @@ function Home() {
       key: 3,
       img: 'team_3.png',
       name: 'Imdad A.',
-      status: 'Développeur Frontend',
+      status: 'Développeur full stack',
       caption:
         'Électron libre polyvalent, Imdad assiste Alexandre sur le back et \
         contribue aux systèmes de notification utilisateur.'
@@ -230,7 +266,7 @@ function Home() {
       key: 4,
       img: 'team_4.png',
       name: 'Maxime T.',
-      status: 'Développeur Frontend',
+      status: 'Développeur front-end',
       caption:
         "Notre patte artistique, Maxime s'occupe de notre charte graphique et \
         de rendre notre application plus belle et agréable à utiliser."
@@ -239,7 +275,7 @@ function Home() {
       key: 5,
       img: 'team_5.png',
       name: 'Quentin D.',
-      status: 'Développeur Frontend',
+      status: 'Développeur front-end',
       caption:
         "Atout majeur du front-end, Quentin s'occupe en priorité de la carte \
         interactive et ses fonctionnalités : itinéraires, points d'intérêt, \
@@ -249,17 +285,16 @@ function Home() {
       key: 6,
       img: 'team_6.png',
       name: 'William N.',
-      status: 'Développeur Frontend',
+      status: 'Développeur front-end',
       caption:
-        "Élément-clé de notre interaction utilisateur, William s'occupe de \
-        nos réseaux sociaux en parallèle de ses contributions à la page \
-        communautaire."
+        "Chargé de l'interaction utilisateur, William s'occupe de nos réseaux \
+        sociaux en parallèle de ses contributions à la page communautaire."
     },
     {
       key: 7,
       img: 'team_7.png',
       name: 'Alexandre B.',
-      status: 'Développeur Backend',
+      status: 'Développeur back-end',
       caption:
         'Notre directeur back-end, Alexandre opère sur nos serveurs et nos \
         API en les sécurisant et nous offrant les connexions dont nous \
@@ -277,13 +312,13 @@ function Home() {
     {
       icon: <GitHubIcon />,
       title: 'GitHub',
-      description: 'Suivez notre avancement sur GitHub !',
+      description: "Suivez l'avancement de l'application Hik'UP sur GitHub !",
       url: 'https://github.com/Hik-UP'
     },
     {
       icon: <EmailIcon />,
-      title: 'Email',
-      description: 'Contactez-nous par mail !',
+      title: 'E-mail',
+      description: "Contactez-nous via l'addresse mail de Hik'UP !",
       url: 'mailto:hikupapp@gmail.com'
     }
   ];
@@ -406,9 +441,7 @@ function Home() {
         <div className="title">Hik'Up</div>
         <Button
           href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
-          style={{
-            color: 'white'
-          }}
+          style={{ color: '#fff' }}
           variant="text"
           startIcon={<DownloadIcon />}
           endIcon={<DownloadIcon />}
@@ -417,9 +450,7 @@ function Home() {
           Télécharger
         </Button>
         <Button
-          style={{
-            color: 'white'
-          }}
+          style={{ color: '#fff' }}
           variant="text"
           startIcon={<KeyboardArrowDownIcon />}
           endIcon={<KeyboardArrowDownIcon />}
@@ -453,6 +484,7 @@ function Home() {
                     }}
                     src={require(`../assets/${item.path}`)}
                     alt="Hik'Up"
+                    className="presentation--img"
                   />
                 )}
               </Grid>
@@ -510,7 +542,7 @@ function Home() {
             rowSpacing={5}
             columnSpacing={2}
             columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
-            style={{ padding: '5% 0 5% 0' }}
+            style={{ padding: '5% 0' }}
           >
             {membersList.map((item) => (
               <Grid item xs={1} sm={1} md={1} className="grid-item">
