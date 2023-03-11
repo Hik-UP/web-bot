@@ -63,10 +63,10 @@ function Home() {
   )[] = [
     {
       type: 'text',
-      body: "Hik'Up est un jeu mobile qui rend la randonnée plus ludique tout en guidant  \
-            ses utilisateurs vers de nombreux points d'intérêt. Novices et passionnés se  \
-            retrouvent au sein d'une communauté unie par l'expérience tout en contribuant \
-            à la protection des écosystèmes."
+      body: "Hik'UP est une application mobile visant à rendre la randonnée plus ludique pour tous.\
+            Créée par un groupe d'étudiants de l'école d'expertise informatique EPITECH, son \
+            développement a commencé à l'aube de 2022 et verra sa bêta sortir l'année suivante \
+            pour entrevoir une sortie officielle en janvier 2024."
     },
     { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
     {
@@ -77,13 +77,44 @@ function Home() {
     },
     {
       type: 'text',
-      body: "Le principe du jeu est de pouvoir gagner des points en marchant lors de      \
-            randonnées, ceux-ci étant attribués en fonction de la distance parcourue. Les \
-            joueurs auront par la suite la possibilité de dépenser les points gagnés pour \
-            planter des arbres, ou pour améliorer l'apparence de leur personnage. De plus,\
-            une carte interactive affichant la position du joueur sur le chemin permettra \
-            de visualiser les points d'intérêt à proximité, chaque point d'intérêt visité \
-            lui attribuant un succès visible par les autres utilisateurs."
+      body: "Hik'UP propose à l'aide d'une carte interactive et l'outil Mapbox la possibilité \
+            d'arpenter des trajets de toutes difficultés, pour débuter comme pour se dépasser. \
+            Passez par les points d'intérêt de vos régions, partez en expédition avec vos amis \
+            et partagez de moments extraordinaires sur des routes et sentiers qui vous offrirons \
+            les bols d'air frais que vous méritez."
+    },
+    {
+      type: 'text',
+      body: "Avec toutes les informations dont vous avez besoin pour mener vos expéditions à bien, \
+            préparez au mieux vos sorties avec le matériel adapté grâce à notre panneau de données \
+            météo et terrain. Hik'UP vous offre également la possibilité de convertir votre sueur \
+            en bonne action, plantant des arbres à chaque nouveau point de contrôle atteint."
+    },
+    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    {
+      type: 'text',
+      body: "Grâce à ses statistiques poussées et ses parcours uniques, tracez vos efforts sur \
+            mobile comme sur notre application web, et sortez le meilleur de vous-mêmes en \
+            gonflant votre motivation. Accumulez des points et customisez l'apparence de votre \
+            personnage 2D avec un look unique, et partagez vos expériences sur le forum de la \
+            communauté. Participez aux événements saisonniers pour gagner des récompenses uniques \
+            et devenir une icône du tableau des scores."
+    },
+    {
+      type: 'text',
+      body: "Vous vous sentez d'humeur inspirée et imaginative ? Participez à la création \
+            d'itinéraires inédits et à la suggestion de points d'intérêt en devenant un curateur \
+            et évaluez les randonnées que vous avez complétées pour nous aider à perfectionner les \
+            ressources proposées !"
+    },
+    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    { type: 'picture', path: 'logo.png', width: '10em', height: '10em' },
+    {
+      type: 'text',
+      body: "Que vous veniez en touriste ou soyiez à la recherche de nouvelles expériences \
+            trépidantes, Hik'UP a tout ce qu'il faut pour agrémenter votre quotidien et devenir \
+            votre meilleur compagnon deroute sur le chemin de la performance."
     }
   ];
   const timelineList: {
@@ -407,7 +438,7 @@ function Home() {
             container
             rowSpacing={5}
             columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
-            style={{ padding: '5% 0 5% 0' }}
+            className="grid__presentation"
           >
             {presList.map((item) => (
               <Grid item xs={1} sm={1} md={1} className="grid-item">
