@@ -64,7 +64,7 @@ function Home() {
         path: string;
         width: string;
         height: string;
-        alt: string
+        alt: string;
       }
   )[] = [
     {
@@ -600,6 +600,13 @@ function Home() {
               </ListItem>
             ))}
           </List>
+        </div>
+        <div className="footer">
+          <p>
+            {window.innerWidth > 800
+              ? "© Hik'UP 2022  |  All rights reserved"
+              : ''}
+          </p>
         </div>
       </div>
     </div>
