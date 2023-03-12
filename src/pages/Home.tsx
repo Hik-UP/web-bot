@@ -601,13 +601,13 @@ function Home() {
             ))}
           </List>
         </div>
-        <div className="footer">
-          <p>
-            {window.innerWidth > 800
-              ? "© Hik'UP 2022  |  All rights reserved"
-              : ''}
-          </p>
-        </div>
+        {window.innerWidth > 800 ? (
+          <div className="footer">
+            <p>{"© Hik'UP 2022  |  All rights reserved"}</p>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
