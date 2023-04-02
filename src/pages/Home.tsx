@@ -58,7 +58,7 @@ function Home() {
     { id: 'social', name: 'Réseaux' }
   ];
   const presList: (
-    | { type: 'text'; body: string }
+    | { type: 'text'; header: string; body: string }
     | {
         type: 'picture';
         path: string;
@@ -69,6 +69,7 @@ function Home() {
   )[] = [
     {
       type: 'text',
+      header: "D'où vient Hik'UP ?",
       body: "Hik'UP est une application mobile visant à rendre la randonnée plus ludique pour tous.\
             Créée par un groupe d'étudiants de l'école d'expertise informatique EPITECH, son \
             développement a commencé à l'aube de 2022 et verra sa bêta sortir l'année suivante \
@@ -90,6 +91,7 @@ function Home() {
     },
     {
       type: 'text',
+      header: "C'est quoi Hik'UP ?",
       body: "Hik'UP propose à l'aide d'une carte interactive et l'outil Mapbox la possibilité \
             d'arpenter des trajets de toutes difficultés, pour débuter comme pour se dépasser. \
             Passez par les points d'intérêt de vos régions, partez en expédition avec vos amis \
@@ -98,6 +100,7 @@ function Home() {
     },
     {
       type: 'text',
+      header: 'Une préparation au top',
       body: "Avec toutes les informations dont vous avez besoin pour mener vos expéditions à bien, \
             préparez au mieux vos sorties avec le matériel adapté grâce à notre panneau de données \
             météo et terrain. Hik'UP vous offre également la possibilité de convertir votre sueur \
@@ -105,20 +108,21 @@ function Home() {
     },
     {
       type: 'picture',
-      path: 'logo.png',
+      path: 'preparation.png',
       width: '10em',
       height: '10em',
-      alt: "logo Hik'UP"
+      alt: 'logo preparation'
     },
     {
       type: 'picture',
-      path: 'logo.png',
+      path: 'effort.png',
       width: '10em',
       height: '10em',
-      alt: "logo Hik'UP"
+      alt: 'logo effort'
     },
     {
       type: 'text',
+      header: "Un compagnon dans l'effort",
       body: "Grâce à ses statistiques poussées et ses parcours uniques, tracez vos efforts sur \
             mobile comme sur notre application web, et sortez le meilleur de vous-mêmes en \
             gonflant votre motivation. Accumulez des points et customisez l'apparence de votre \
@@ -128,6 +132,7 @@ function Home() {
     },
     {
       type: 'text',
+      header: 'Un monde à explorer et partager',
       body: "Vous vous sentez d'humeur inspirée et imaginative ? Participez à la création \
             d'itinéraires inédits et à la suggestion de points d'intérêt en devenant un curateur \
             et évaluez les randonnées que vous avez complétées pour nous aider à perfectionner les \
@@ -135,23 +140,24 @@ function Home() {
     },
     {
       type: 'picture',
-      path: 'logo.png',
+      path: 'park.png',
       width: '10em',
       height: '10em',
-      alt: "logo Hik'UP"
+      alt: 'logo parc'
     },
     {
       type: 'picture',
-      path: 'logo.png',
+      path: 'everybody.png',
       width: '10em',
       height: '10em',
-      alt: "logo Hik'UP"
+      alt: 'logo tout le monde'
     },
     {
       type: 'text',
+      header: "Hik'UP, pour tous les goûts",
       body: "Que vous veniez en touriste ou soyiez à la recherche de nouvelles expériences \
             trépidantes, Hik'UP a tout ce qu'il faut pour agrémenter votre quotidien et devenir \
-            votre meilleur compagnon deroute sur le chemin de la performance."
+            votre meilleur compagnon de route sur le chemin de la performance."
     }
   ];
   const timelineList: {
@@ -440,6 +446,9 @@ function Home() {
       </div>
       <div className="home" id="home">
         <div className="title">Hik'Up</div>
+        <div className="subtitle">
+          La randonnée plus ludique pour le bien-être de tous
+        </div>
         <Button
           href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
           style={{ color: '#fff' }}
@@ -475,13 +484,15 @@ function Home() {
             {presList.map((item) => (
               <Grid item xs={1} sm={1} md={1} className="grid-item">
                 {item.type === 'text' ? (
-                  <div className="text">{item.body}</div>
+                  <div className="presentation--text">
+                    <div className="text__header">{item.header}</div>
+                    <div className="text">{item.body}</div>
+                  </div>
                 ) : (
                   <img
                     style={{
                       height: item.height,
-                      width: item.width,
-                      borderRadius: '10px'
+                      width: item.width
                     }}
                     src={require(`../assets/${item.path}`)}
                     alt="Hik'Up"

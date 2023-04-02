@@ -14,9 +14,11 @@ body {
   color: #333;
   margin: 0;
 
+  background-image: url('../assets/nature.gif');
+  background-position: top;
+  background-repeat: no-repeat;
   @media only screen and (min-width: 800px) {
-    background-image: url('../assets/trees.gif');
-    background-repeat: no-repeat;
+    // background-image: url('../assets/trees.gif');
     background-attachment: fixed;
   }
 }
@@ -111,17 +113,42 @@ body {
       font-size: 2em;
     }
   }
+  .subtitle {
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+    max-width: 75%;
+    padding: 0.5em 1em;
+    margin-bottom: 3em;
+    border-radius: 4px;
+    background: rgba(75, 180, 16, 0.75);
+  }
 
   .text {
     text-align: justify;
     overflow-wrap: break-word;
 
     @media only screen and (min-width: 800px) {
-      font-size: 0.95em;
+      font-size: 16px;
     }
 
     @media only screen and (max-width: 800px) {
-      font-size: 0.84em;
+      font-size: 14px;
+    }
+  }
+  .text__header {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    overflow-wrap: break-word;
+    padding-bottom: 10px;
+
+    @media only screen and (min-width: 800px) {
+      font-size: 20px;
+    }
+
+    @media only screen and (max-width: 800px) {
+      font-size: 16px;
     }
   }
 
@@ -130,7 +157,7 @@ body {
     overflow-y: auto;
 
     @media only screen and (min-width: 800px) {
-      margin: 20px 21% 5px 21%;
+      margin: 20px 21%;
       padding: 0 1%;
     }
 
@@ -144,6 +171,7 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-top: 32px;
     }
   }
   .grid__presentation {
@@ -162,11 +190,7 @@ body {
     overflow: hidden;
     overflow-wrap: break-word;
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-
-    @media only screen and (max-width: 800px) {
-      background-image: url('../assets/trees.gif');
-      background-repeat: no-repeat;
-    }
+    background:rgba(0, 0, 0, 0.5);
 
     .title {
       color: white;
@@ -190,8 +214,15 @@ body {
     justify-content: center;
     overflow: hidden;
     overflow-wrap: break-word;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+
+    @media only screen and (max-width: 800px) {
+      background: #fff;
+    }
+  }
+  .presentation--img {
+    border-radius: 8px;
   }
 
   .timeline {
@@ -203,8 +234,12 @@ body {
     justify-content: center;
     overflow: hidden;
     overflow-wrap: break-word;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+
+    @media only screen and (max-width: 800px) {
+      background: #fff;
+    }
 
     .container {
       overflow-y: auto;
@@ -265,8 +300,12 @@ body {
     justify-content: center;
     overflow: hidden;
     overflow-wrap: break-word;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+
+    @media only screen and (max-width: 800px) {
+      background: #fff;
+    }
 
     .picture {
       @media only screen and (min-width: 800px) {
@@ -353,17 +392,21 @@ body {
     justify-content: center;
     overflow: hidden;
     overflow-wrap: break-word;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: inset 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
 
-      .footer {
-        font-style: italic;
-        font-size: 12px;
-        color: rgba(0, 0, 0, 0.4);
-        position: fixed;
-        bottom: 1%;
-      }
+    @media only screen and (max-width: 800px) {
+      background: #fff;
     }
+
+    .footer {
+      font-style: italic;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.4);
+      position: fixed;
+      bottom: 1%;
+    }
+  }
 
   .list-container {
     max-height: 80%;
