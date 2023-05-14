@@ -280,16 +280,6 @@ function Home() {
     },
     {
       key: 5,
-      img: 'team_5.png',
-      name: 'Quentin D.',
-      status: 'Développeur front-end',
-      caption:
-        "Atout majeur du front-end, Quentin s'occupe en priorité de la carte \
-        interactive et ses fonctionnalités : itinéraires, points d'intérêt, \
-        bulles..."
-    },
-    {
-      key: 6,
       img: 'team_6.png',
       name: 'William N.',
       status: 'Développeur front-end',
@@ -298,7 +288,7 @@ function Home() {
         sociaux en parallèle de ses contributions à la page communautaire."
     },
     {
-      key: 7,
+      key: 6,
       img: 'team_7.png',
       name: 'Alexandre B.',
       status: 'Développeur back-end',
@@ -306,13 +296,6 @@ function Home() {
         'Notre directeur back-end, Alexandre opère sur nos serveurs et nos \
         API en les sécurisant et nous offrant les connexions dont nous \
         avons besoin.'
-    },
-    {
-      key: 8,
-      img: 'logo.png',
-      name: ' ',
-      status: ' ',
-      caption: "Hik'UP"
     }
   ];
   const socialList = [
