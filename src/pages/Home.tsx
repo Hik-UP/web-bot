@@ -50,6 +50,65 @@ function Home() {
     'timeline-container',
     'social-list'
   ];
+
+  const membersList = [
+    {
+      key: 1,
+      img: 'pficon6.jpg',
+      name: 'Mickael P.',
+      status: 'Développeur front-end',
+      caption:
+        "Chef de groupe, Mickael contribue majoritairement aux pages \
+        annexes de l'application mobile : connexion, accueil, maquettes..."
+    },
+    {
+      key: 2,
+      img: 'pficon4.jpg',
+      name: 'Elias B.',
+      status: 'Développeur front-end',
+      caption:
+        'Grâce à ses compétences en sécurité, Elias contribue à la robustesse \
+        des échanges de données utilisateur vers et depuis les serveurs.'
+    },
+    {
+      key: 3,
+      img: 'pficon3.jpg',
+      name: 'Imdad A.',
+      status: 'Développeur full stack',
+      caption:
+        'Électron libre polyvalent, Imdad assiste Alexandre sur le back et \
+        contribue aux systèmes de notification utilisateur.'
+    },
+    {
+      key: 4,
+      img: 'pficon5.jpg',
+      name: 'Maxime T.',
+      status: 'Développeur front-end',
+      caption:
+        "Notre patte artistique, Maxime s'occupe de notre charte graphique et \
+        de rendre notre application plus belle et agréable à utiliser."
+    },
+    {
+      key: 5,
+      img: 'pficon2.jpg',
+      name: 'William N.',
+      status: 'Développeur front-end',
+      caption:
+        "Chargé de l'interaction utilisateur, William s'occupe de nos réseaux \
+        sociaux en parallèle de ses contributions à la page communautaire."
+    },
+    {
+      key: 6,
+      img: 'pficon1.jpg',
+      name: 'Alexandre B.',
+      status: 'Développeur back-end',
+      caption:
+        'Notre directeur back-end, Alexandre opère sur nos serveurs et nos \
+        API en les sécurisant et nous offrant les connexions dont nous \
+        avons besoin.'
+    }
+  ];
+
   const viewArray = [
     { id: 'home', name: 'Accueil' },
     { id: 'presentation', name: 'Présentation' },
@@ -57,16 +116,8 @@ function Home() {
     { id: 'team', name: 'Équipe' },
     { id: 'social', name: 'Réseaux' }
   ];
-  const presList: (
-    | { type: 'text'; header: string; body: string }
-    | {
-        type: 'picture';
-        path: string;
-        width: string;
-        height: string;
-        alt: string;
-      }
-  )[] = [
+
+  const presList: { type: 'text'; header: string; body: string }[] = [
     {
       type: 'text',
       header: "D'où vient Hik'UP ?",
@@ -74,20 +125,6 @@ function Home() {
             Créée par un groupe d'étudiants de l'école d'expertise informatique EPITECH, son \
             développement a commencé à l'aube de 2022 et verra sa bêta sortir l'année suivante \
             pour entrevoir une sortie officielle en janvier 2024."
-    },
-    {
-      type: 'picture',
-      path: 'logo.png',
-      width: '10em',
-      height: '10em',
-      alt: "logo Hik'UP"
-    },
-    {
-      type: 'picture',
-      path: 'navigation.png',
-      width: '12em',
-      height: '18em',
-      alt: 'projection de navigation 3D sur la GR20'
     },
     {
       type: 'text',
@@ -105,20 +142,6 @@ function Home() {
             préparez au mieux vos sorties avec le matériel adapté grâce à notre panneau de données \
             météo et terrain. Hik'UP vous offre également la possibilité de convertir votre sueur \
             en bonne action, plantant des arbres à chaque nouveau point de contrôle atteint."
-    },
-    {
-      type: 'picture',
-      path: 'preparation.png',
-      width: '10em',
-      height: '10em',
-      alt: 'logo preparation'
-    },
-    {
-      type: 'picture',
-      path: 'effort.png',
-      width: '10em',
-      height: '10em',
-      alt: 'logo effort'
     },
     {
       type: 'text',
@@ -139,20 +162,6 @@ function Home() {
             ressources proposées !"
     },
     {
-      type: 'picture',
-      path: 'park.png',
-      width: '10em',
-      height: '10em',
-      alt: 'logo parc'
-    },
-    {
-      type: 'picture',
-      path: 'everybody.png',
-      width: '10em',
-      height: '10em',
-      alt: 'logo tout le monde'
-    },
-    {
       type: 'text',
       header: "Hik'UP, pour tous les goûts",
       body: "Que vous veniez en touriste ou soyiez à la recherche de nouvelles expériences \
@@ -160,6 +169,7 @@ function Home() {
             votre meilleur compagnon de route sur le chemin de la performance."
     }
   ];
+
   const timelineList: {
     date: string;
 
@@ -241,63 +251,7 @@ function Home() {
       description: 'Version grand public de notre application'
     }
   ];
-  const membersList = [
-    {
-      key: 1,
-      img: 'team_1.png',
-      name: 'Mickael P.',
-      status: 'Développeur front-end',
-      caption:
-        "Chef de groupe, Mickael contribue majoritairement aux pages \
-        annexes de l'application mobile : connexion, accueil, maquettes..."
-    },
-    {
-      key: 2,
-      img: 'team_2.png',
-      name: 'Elias B.',
-      status: 'Développeur front-end',
-      caption:
-        'Grâce à ses compétences en sécurité, Elias contribue à la robustesse \
-        des échanges de données utilisateur vers et depuis les serveurs.'
-    },
-    {
-      key: 3,
-      img: 'team_3.png',
-      name: 'Imdad A.',
-      status: 'Développeur full stack',
-      caption:
-        'Électron libre polyvalent, Imdad assiste Alexandre sur le back et \
-        contribue aux systèmes de notification utilisateur.'
-    },
-    {
-      key: 4,
-      img: 'team_4.png',
-      name: 'Maxime T.',
-      status: 'Développeur front-end',
-      caption:
-        "Notre patte artistique, Maxime s'occupe de notre charte graphique et \
-        de rendre notre application plus belle et agréable à utiliser."
-    },
-    {
-      key: 5,
-      img: 'team_6.png',
-      name: 'William N.',
-      status: 'Développeur front-end',
-      caption:
-        "Chargé de l'interaction utilisateur, William s'occupe de nos réseaux \
-        sociaux en parallèle de ses contributions à la page communautaire."
-    },
-    {
-      key: 6,
-      img: 'team_7.png',
-      name: 'Alexandre B.',
-      status: 'Développeur back-end',
-      caption:
-        'Notre directeur back-end, Alexandre opère sur nos serveurs et nos \
-        API en les sécurisant et nous offrant les connexions dont nous \
-        avons besoin.'
-    }
-  ];
+
   const socialList = [
     {
       icon: <GitHubIcon />,
@@ -427,181 +381,170 @@ function Home() {
           </Spring>
         ))}
       </div>
-      <div className="home" id="home">
-        <div className="title">Hik'Up</div>
-        <div className="subtitle">
-          La randonnée plus ludique pour le bien-être de tous
-        </div>
-        <Button
-          href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
-          style={{ color: '#fff' }}
-          variant="text"
-          startIcon={<DownloadIcon />}
-          endIcon={<DownloadIcon />}
-          className="text"
-        >
-          Télécharger
-        </Button>
-        <Button
-          style={{ color: '#fff' }}
-          variant="text"
-          startIcon={<KeyboardArrowDownIcon />}
-          endIcon={<KeyboardArrowDownIcon />}
-          onClick={() => {
-            setIndex(1 <= viewArray.length - 1 ? 1 : index);
-          }}
-          className="text"
-        >
-          En savoir plus
-        </Button>
-      </div>
-      <div className="presentation" id="presentation">
-        <div className="title">Présentation</div>
-        <div className="grid" id="pres-grid">
-          <Grid
-            container
-            rowSpacing={5}
-            columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
-            className="grid__presentation"
+      <div className="pageBackground">
+        <div className="home" id="home">
+          <div className="title">Hik'Up</div>
+          <div className="subtitle">
+            La randonnée plus ludique pour le bien-être de tous
+          </div>
+          <Button
+            href="https://github.com/Hik-UP/android/releases/latest/download/app-release.apk"
+            style={{ color: '#fff' }}
+            variant="text"
+            startIcon={<DownloadIcon />}
+            endIcon={<DownloadIcon />}
+            className="text"
           >
-            {presList.map((item) => (
-              <Grid item xs={1} sm={1} md={1} className="grid-item">
-                {item.type === 'text' ? (
-                  <div className="presentation--text">
+            Télécharger
+          </Button>
+          <Button
+            style={{ color: '#fff' }}
+            variant="text"
+            startIcon={<KeyboardArrowDownIcon />}
+            endIcon={<KeyboardArrowDownIcon />}
+            onClick={() => {
+              setIndex(1 <= viewArray.length - 1 ? 1 : index);
+            }}
+            className="text"
+          >
+            En savoir plus
+          </Button>
+        </div>
+        <div className="presentation" id="presentation">
+          <div className="title">Présentation</div>
+          <div className="grid" id="pres-grid">
+            <Grid
+              container
+              rowSpacing={5}
+              columns={{ xs: 1, sm: 1, md: 1, lg: 2 }}
+              className="grid__presentation"
+            >
+              {presList.map((item) => (
+                <Grid item xs={1} sm={1} md={1} className="grid-item">
+                  <div className="">
                     <div className="text__header">{item.header}</div>
-                    <div className="text">{item.body}</div>
+                    <div className="paragraphe-text">{item.body}</div>
                   </div>
-                ) : (
-                  <img
-                    style={{
-                      height: item.height,
-                      width: item.width
-                    }}
-                    src={require(`../assets/${item.path}`)}
-                    alt="Hik'Up"
-                    className="presentation--img"
-                  />
-                )}
-              </Grid>
-            ))}
-          </Grid>
+                </Grid>
+              ))}
+            </Grid>
+          </div>
         </div>
-      </div>
-      <div className="timeline" id="timeline">
-        <div className="title">Chronologie</div>
-        <div className="container" id="timeline-container">
-          <Timeline position="alternate">
-            {timelineList.map((item) => (
-              <TimelineItem>
-                <TimelineOppositeContent
-                  sx={{ m: 'auto 0' }}
-                  variant="body2"
-                  color="text.secondary"
-                  className="date"
-                >
-                  {item.date}
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineConnector />
-                  <TimelineDot
-                    color={item.iconColor}
-                    variant={item.iconVariant}
+        <div className="timeline" id="timeline">
+          <div className="title">Chronologie</div>
+          <div className="container text" id="timeline-container">
+            <Timeline position="alternate">
+              {timelineList.map((item) => (
+                <TimelineItem>
+                  <TimelineOppositeContent
+                    sx={{ m: 'auto 0' }}
+                    variant="body2"
+                    className="date text-date-timeline"
                   >
-                    {item.icon}
-                  </TimelineDot>
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent
-                  sx={{ py: '12px', px: 2 }}
-                  className="timeline-content"
-                >
-                  <Typography className="task" component="span">
-                    {item.title}
-                  </Typography>
-                  {window.innerWidth > 800 ? (
-                    <Typography className="description">
-                      {item.description}
+                    {item.date}
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineConnector />
+                    <TimelineDot
+                      color={item.iconColor}
+                      variant={item.iconVariant}
+                    >
+                      {item.icon}
+                    </TimelineDot>
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                  <TimelineContent
+                    sx={{ py: '12px', px: 2 }}
+                    className="timeline-content text-title-timeline"
+                  >
+                    <Typography className="task" component="span">
+                      {item.title}
                     </Typography>
-                  ) : undefined}
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </Timeline>
+                    {window.innerWidth > 800 ? (
+                      <Typography className="text-desc-timeline">
+                        {item.description}
+                      </Typography>
+                    ) : undefined}
+                  </TimelineContent>
+                </TimelineItem>
+              ))}
+            </Timeline>
+          </div>
         </div>
-      </div>
-      <div className="team" id="team">
-        <div className="title">Équipe</div>
-        <div className="grid" id="team-grid">
-          <Grid
-            container
-            rowSpacing={5}
-            columnSpacing={2}
-            columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
-            style={{ padding: '5% 0' }}
-          >
-            {membersList.map((item) => (
-              <Grid item xs={1} sm={1} md={1} className="grid-item">
-                <div className="wrapper">
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      image={require(`../assets/${item.img}`)}
-                      alt={item.name}
-                      className="picture"
-                    />
+        <div className="team" id="team">
+          <div className="title">Équipe</div>
+          <div className="grid" id="team-grid">
+            <Grid
+              container
+              rowSpacing={5}
+              columnSpacing={2}
+              columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
+              style={{ padding: '5% 0' }}
+            >
+              {membersList.map((item) => (
+                <Grid item xs={1} sm={1} md={1} className="grid-item">
+                  <div className="wrapper">
+                    <Card>
+                      <CardMedia
+                        component="img"
+                        image={require(`../assets/${item.img}`)}
+                        alt={item.name}
+                        className="picture"
+                      />
+                      {item.key < 8 ? (
+                        <CardContent style={{ padding: '10px' }}>
+                          <Typography className="name" component="div">
+                            {item.name}
+                          </Typography>
+                          <Typography className="status" color="text.secondary">
+                            {item.status}
+                          </Typography>
+                        </CardContent>
+                      ) : (
+                        <></>
+                      )}
+                    </Card>
                     {item.key < 8 ? (
-                      <CardContent style={{ padding: '10px' }}>
-                        <Typography className="name" component="div">
-                          {item.name}
-                        </Typography>
-                        <Typography className="status" color="text.secondary">
-                          {item.status}
-                        </Typography>
-                      </CardContent>
+                      <div className="caption">
+                        <div className="caption--text">{item.caption}</div>
+                      </div>
                     ) : (
                       <></>
                     )}
-                  </Card>
-                  {item.key < 8 ? (
-                    <div className="caption">
-                      <div className="caption--text">{item.caption}</div>
-                    </div>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </div>
-      <div className="social" id="social">
-        <div className="title">Réseaux</div>
-        <div className="list-container" id="social-list">
-          <List className="list">
-            {socialList.map((item) => (
-              <ListItem className="list-item">
-                <ListItemAvatar>
-                  <Avatar>{item.icon}</Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary={item.title}
-                  secondary={
-                    window.innerWidth > 800 ? item.description : undefined
-                  }
-                  onClick={() => window.open(item.url, '_blank')}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </div>
-        {window.innerWidth > 800 ? (
-          <div className="footer">
-            <p>{"© Hik'UP 2022  |  All rights reserved"}</p>
+                  </div>
+                </Grid>
+              ))}
+            </Grid>
           </div>
-        ) : (
-          <></>
-        )}
+        </div>
+        <div className="social" id="social">
+          <div className="title">Réseaux</div>
+          <div className="list-container" id="social-list">
+            <List className="list">
+              {socialList.map((item) => (
+                <ListItem className="list-item">
+                  <ListItemAvatar>
+                    <Avatar>{item.icon}</Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={item.title}
+                    secondary={
+                      window.innerWidth > 800 ? item.description : undefined
+                    }
+                    onClick={() => window.open(item.url, '_blank')}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </div>
+          {window.innerWidth > 800 ? (
+            <div className="footer">
+              <p>{"© Hik'UP 2022  |  All rights reserved"}</p>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );
