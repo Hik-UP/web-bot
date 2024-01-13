@@ -478,7 +478,7 @@ function Home() {
               container
               rowSpacing={5}
               columnSpacing={2}
-              columns={{ xs: 1, sm: 1, md: 2, lg: 3 }}
+              columns={{ xs: 1, sm: 1, md: 2, lg: 4 }}
               style={{ padding: '5% 0' }}
             >
               {membersList.map((item) => (
