@@ -14,7 +14,8 @@ import {
   acceptInvite,
   refuseInvite,
   getHikes,
-  deleteHike
+  deleteHike,
+  getProfile
 } from '../api';
 import { Hike } from '../socket';
 
@@ -50,13 +51,41 @@ function BotPage() {
     setInvites(undefined);
     setHikes(undefined);
     setSelectedHike(undefined);
-    getInvites(user).then((value: IHike[]) => setInvites(value));
-    getHikes(user).then((value: IHike[]) => setHikes(value));
+    getInvites(user).then((value: IHike[] | null) => {
+      if (value !== null) {
+        setInvites(value);
+      } else {
+        localStorage.removeItem('user');
+        navigate('/', { replace: true });
+      }
+    });
+    getHikes(user).then((value: IHike[] | null) => {
+      if (value !== null) {
+        setHikes(value);
+      } else {
+        localStorage.removeItem('user');
+        navigate('/', { replace: true });
+      }
+    });
   };
 
   useEffect(() => {
-    getInvites(user).then((value: IHike[]) => setInvites(value));
-    getHikes(user).then((value: IHike[]) => setHikes(value));
+    getInvites(user).then((value: IHike[] | null) => {
+      if (value !== null) {
+        setInvites(value);
+      } else {
+        localStorage.removeItem('user');
+        navigate('/', { replace: true });
+      }
+    });
+    getHikes(user).then((value: IHike[] | null) => {
+      if (value !== null) {
+        setHikes(value);
+      } else {
+        localStorage.removeItem('user');
+        navigate('/', { replace: true });
+      }
+    });
   }, [loading]);
 
   useEffect(() => {

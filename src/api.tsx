@@ -1,5 +1,27 @@
 import { IUser, IHike } from './ts';
 
+async function getProfile(user: IUser) {
+  const response = await fetch(
+    'https://pro-hikup.westeurope.cloudapp.azure.com/api/user/profile',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`
+      },
+      body: JSON.stringify({
+        user: user.payload
+      })
+    }
+  );
+
+  if (response.status === 200) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 async function getInvites(user: IUser) {
   const response = await fetch(
     'https://pro-hikup.westeurope.cloudapp.azure.com/api/user/hike/retrieve',
@@ -19,9 +41,13 @@ async function getInvites(user: IUser) {
   );
   const { hikes } = await response.json();
 
-  return hikes.guest.sort(function (a: IHike, b: IHike) {
-    return new Date(b.schedule).valueOf() - new Date(a.schedule).valueOf();
-  });
+  if (hikes === undefined) {
+    return null;
+  } else {
+    return hikes.guest.sort(function (a: IHike, b: IHike) {
+      return new Date(b.schedule).valueOf() - new Date(a.schedule).valueOf();
+    });
+  }
 }
 
 async function acceptInvite(user: IUser, hikeId: string) {
@@ -82,20 +108,25 @@ async function getHikes(user: IUser) {
   );
   const data = await response.json();
 
-  data.hikes.organized.forEach((hike: IHike) => {
-    hikes.push(hike);
-  });
-  data.hikes.attendee.forEach((hike: IHike) => {
-    hikes.push(hike);
-  });
-
-  return hikes
-    .filter(
-      (value, index, self) => index === self.findIndex((t) => t.id === value.id)
-    )
-    .sort(function (a: IHike, b: IHike) {
-      return new Date(b.schedule).valueOf() - new Date(a.schedule).valueOf();
+  if (data.hikes === undefined) {
+    return null;
+  } else {
+    data.hikes.organized.forEach((hike: IHike) => {
+      hikes.push(hike);
     });
+    data.hikes.attendee.forEach((hike: IHike) => {
+      hikes.push(hike);
+    });
+
+    return hikes
+      .filter(
+        (value, index, self) =>
+          index === self.findIndex((t) => t.id === value.id)
+      )
+      .sort(function (a: IHike, b: IHike) {
+        return new Date(b.schedule).valueOf() - new Date(a.schedule).valueOf();
+      });
+  }
 }
 
 async function deleteHike(user: IUser, hikeId: string) {
@@ -165,4 +196,11 @@ async function deleteHike(user: IUser, hikeId: string) {
   );
 }
 
-export { getInvites, acceptInvite, refuseInvite, getHikes, deleteHike };
+export {
+  getProfile,
+  getInvites,
+  acceptInvite,
+  refuseInvite,
+  getHikes,
+  deleteHike
+};
