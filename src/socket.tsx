@@ -21,18 +21,18 @@ function bearing(
   destLat: number,
   destLng: number
 ) {
-  const radStartLat = toRadians(startLat);
-  const radStartLng = toRadians(startLng);
-  const radDestLat = toRadians(destLat);
-  const radDestLng = toRadians(destLng);
-  const y = Math.sin(radDestLng - radStartLat) * Math.cos(radDestLat);
-  const x =
-    Math.cos(startLat) * Math.sin(radDestLat) -
-    Math.sin(startLat) *
-      Math.cos(radDestLat) *
-      Math.cos(radDestLng - radStartLng);
-  const brng = toDegrees(Math.atan2(y, x));
+  startLat = toRadians(startLat);
+  startLng = toRadians(startLng);
+  destLat = toRadians(destLat);
+  destLng = toRadians(destLng);
 
+  const y = Math.sin(destLng - startLng) * Math.cos(destLat);
+  const x =
+    Math.cos(startLat) * Math.sin(destLat) -
+    Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+  let brng = Math.atan2(y, x);
+
+  brng = toDegrees(brng);
   return (brng + 360) % 360;
 }
 
