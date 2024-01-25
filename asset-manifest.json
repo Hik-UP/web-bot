@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/2024/hikup/static/css/main.980a6e63.css",
+    "main.js": "/2024/hikup/static/js/main.2e2a5be6.js",
+    "index.html": "/2024/hikup/index.html",
+    "main.980a6e63.css.map": "/2024/hikup/static/css/main.980a6e63.css.map",
+    "main.2e2a5be6.js.map": "/2024/hikup/static/js/main.2e2a5be6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.980a6e63.css",
+    "static/js/main.2e2a5be6.js"
+  ]
+}
